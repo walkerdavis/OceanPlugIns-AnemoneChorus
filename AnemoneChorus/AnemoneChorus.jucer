@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<JUCERPROJECT id="oExN8r" name="AnemoneChorus" projectType="audioplug" jucerVersion="5.4.3">
+  <MAINGROUP id="cwM0xR" name="AnemoneChorus">
+    <GROUP id="{2F8F9925-C444-80F5-17F0-CF1B4E6AABE1}" name="Panels">
+      <FILE id="NvVjaj" name="AC_CenterPanel.cpp" compile="1" resource="0"
+            file="Source/AC_CenterPanel.cpp"/>
+      <FILE id="XbOrCC" name="AC_CenterPanel.h" compile="0" resource="0"
+            file="Source/AC_CenterPanel.h"/>
+      <FILE id="jrswCH" name="AC_CenterPanelMenuBar.cpp" compile="1" resource="0"
+            file="Source/AC_CenterPanelMenuBar.cpp"/>
+      <FILE id="xsBRY5" name="AC_CenterPanelMenuBar.h" compile="0" resource="0"
+            file="Source/AC_CenterPanelMenuBar.h"/>
+      <FILE id="C5MDzD" name="AC_FXPanel.cpp" compile="1" resource="0" file="Source/AC_FXPanel.cpp"/>
+      <FILE id="sHJBt5" name="AC_FXPanel.h" compile="0" resource="0" file="Source/AC_FXPanel.h"/>
+      <FILE id="WFzFXT" name="AC_GainPanel.cpp" compile="1" resource="0"
+            file="Source/AC_GainPanel.cpp"/>
+      <FILE id="GxyRWf" name="AC_GainPanel.h" compile="0" resource="0" file="Source/AC_GainPanel.h"/>
+      <FILE id="navqbJ" name="AC_MainPanel.cpp" compile="1" resource="0"
+            file="Source/AC_MainPanel.cpp"/>
+      <FILE id="E7ePqa" name="AC_MainPanel.h" compile="0" resource="0" file="Source/AC_MainPanel.h"/>
+      <FILE id="mJ0416" name="AC_PanelBase.cpp" compile="1" resource="0"
+            file="Source/AC_PanelBase.cpp"/>
+      <FILE id="OYsw4o" name="AC_PanelBase.h" compile="0" resource="0" file="Source/AC_PanelBase.h"/>
+      <FILE id="ZPFIn5" name="AC_TopPanel.cpp" compile="1" resource="0" file="Source/AC_TopPanel.cpp"/>
+      <FILE id="MdGl5u" name="AC_TopPanel.h" compile="0" resource="0" file="Source/AC_TopPanel.h"/>
+    </GROUP>
+    <GROUP id="{37E2E301-B4E3-60FD-FED8-9F3B9489F1F9}" name="Parameter Control">
+      <FILE id="uKvgF5" name="AC_ParameterComboBox.cpp" compile="1" resource="0"
+            file="Source/AC_ParameterComboBox.cpp"/>
+      <FILE id="bMTW3x" name="AC_ParameterComboBox.h" compile="0" resource="0"
+            file="Source/AC_ParameterComboBox.h"/>
+      <FILE id="cpC6M9" name="AC_ParameterSlider.cpp" compile="1" resource="0"
+            file="Source/AC_ParameterSlider.cpp"/>
+      <FILE id="TPU2dp" name="AC_ParameterSlider.h" compile="0" resource="0"
+            file="Source/AC_ParameterSlider.h"/>
+    </GROUP>
+    <GROUP id="{86A6489E-4B80-A210-1F89-8E4C9F698441}" name="Managers"/>
+    <GROUP id="{1B1DB79E-8C7E-C3D1-6D42-3538DB1E38C4}" name="Components">
+      <FILE id="aI1C2g" name="AC_VuMeter.cpp" compile="1" resource="0" file="Source/AC_VuMeter.cpp"/>
+      <FILE id="OaFdoe" name="AC_VuMeter.h" compile="0" resource="0" file="Source/AC_VuMeter.h"/>
+    </GROUP>
+    <GROUP id="{5EFBF867-B19F-8BC2-B307-C38E4F7DD560}" name="Helpers">
+      <FILE id="ETST3k" name="AC_AudioHelpers.h" compile="0" resource="0"
+            file="Source/AC_AudioHelpers.h"/>
+      <FILE id="JCTZIP" name="AC_HelperFunctions.h" compile="0" resource="0"
+            file="Source/AC_HelperFunctions.h"/>
+      <FILE id="L7tlra" name="AC_InterfaceDefines.h" compile="0" resource="0"
+            file="Source/AC_InterfaceDefines.h"/>
+      <FILE id="TAgbBC" name="AC_LookAndFeel.h" compile="0" resource="0"
+            file="Source/AC_LookAndFeel.h"/>
+      <FILE id="PhlrE1" name="AC_Parameters.h" compile="0" resource="0" file="Source/AC_Parameters.h"/>
+    </GROUP>
+    <GROUP id="{31A456AA-EB71-73F7-D338-8BD7918BB8E7}" name="DSP">
+      <FILE id="ZAj4op" name="AC_Delay.cpp" compile="1" resource="0" file="Source/AC_Delay.cpp"/>
+      <FILE id="FX5sCf" name="AC_Delay.h" compile="0" resource="0" file="Source/AC_Delay.h"/>
+      <FILE id="zXKAAR" name="AC_Gain.cpp" compile="1" resource="0" file="Source/AC_Gain.cpp"/>
+      <FILE id="XkpP8y" name="AC_Gain.h" compile="0" resource="0" file="Source/AC_Gain.h"/>
+      <FILE id="j0aEsp" name="AC_LFO.cpp" compile="1" resource="0" file="Source/AC_LFO.cpp"/>
+      <FILE id="P6WkiH" name="AC_LFO.h" compile="0" resource="0" file="Source/AC_LFO.h"/>
+    </GROUP>
+    <GROUP id="{9BC3326A-670C-BB67-60C0-604E0A4427A2}" name="Source">
+      <FILE id="iAs4Tk" name="PluginProcessor.cpp" compile="1" resource="0"
+            file="Source/PluginProcessor.cpp"/>
+      <FILE id="LytEh7" name="PluginProcessor.h" compile="0" resource="0"
+            file="Source/PluginProcessor.h"/>
+      <FILE id="rHbefU" name="PluginEditor.cpp" compile="1" resource="0"
+            file="Source/PluginEditor.cpp"/>
+      <FILE id="sMeiGf" name="PluginEditor.h" compile="0" resource="0" file="Source/PluginEditor.h"/>
+    </GROUP>
+    <GROUP id="{3BBD6528-662D-B7EF-9733-F8900187DD7E}" name="Assets">
+      <FILE id="oLtNYJ" name="ac_bg.png" compile="0" resource="1" file="Assets/ac_bg.png"/>
+      <FILE id="STGjQd" name="ac_knob.png" compile="0" resource="1" file="Assets/ac_knob.png"/>
+    </GROUP>
+  </MAINGROUP>
+  <EXPORTFORMATS>
+    <XCODE_MAC targetFolder="Builds/MacOSX">
+      <CONFIGURATIONS>
+        <CONFIGURATION isDebug="1" name="Debug"/>
+        <CONFIGURATION isDebug="0" name="Release"/>
+      </CONFIGURATIONS>
+      <MODULEPATHS>
+        <MODULEPATH id="juce_audio_basics" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_devices" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_formats" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_plugin_client" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_processors" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_audio_utils" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_core" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_cryptography" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_data_structures" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_events" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_graphics" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_basics" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_gui_extra" path="../../../Development/JUCE/modules"/>
+        <MODULEPATH id="juce_opengl" path="../../../Development/JUCE/modules"/>
+      </MODULEPATHS>
+    </XCODE_MAC>
+  </EXPORTFORMATS>
+  <MODULES>
+    <MODULE id="juce_audio_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_devices" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_formats" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_plugin_client" showAllCode="1" useLocalCopy="0"
+            useGlobalPath="1"/>
+    <MODULE id="juce_audio_processors" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_audio_utils" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_core" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_cryptography" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_data_structures" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_events" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_graphics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_basics" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_gui_extra" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+    <MODULE id="juce_opengl" showAllCode="1" useLocalCopy="0" useGlobalPath="1"/>
+  </MODULES>
+  <LIVE_SETTINGS>
+    <OSX/>
+  </LIVE_SETTINGS>
+  <JUCEOPTIONS JUCE_VST3_CAN_REPLACE_VST2="0" JUCE_STRICT_REFCOUNTEDPOINTER="1"/>
+</JUCERPROJECT>
