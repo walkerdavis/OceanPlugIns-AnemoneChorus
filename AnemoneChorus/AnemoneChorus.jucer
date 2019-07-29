@@ -35,7 +35,12 @@
       <FILE id="TPU2dp" name="AC_ParameterSlider.h" compile="0" resource="0"
             file="Source/AC_ParameterSlider.h"/>
     </GROUP>
-    <GROUP id="{86A6489E-4B80-A210-1F89-8E4C9F698441}" name="Managers"/>
+    <GROUP id="{86A6489E-4B80-A210-1F89-8E4C9F698441}" name="Managers">
+      <FILE id="C8tlKw" name="AC_PresetManager.cpp" compile="1" resource="0"
+            file="Source/AC_PresetManager.cpp"/>
+      <FILE id="AdKotD" name="AC_PresetManager.h" compile="0" resource="0"
+            file="Source/AC_PresetManager.h"/>
+    </GROUP>
     <GROUP id="{1B1DB79E-8C7E-C3D1-6D42-3538DB1E38C4}" name="Components">
       <FILE id="aI1C2g" name="AC_VuMeter.cpp" compile="1" resource="0" file="Source/AC_VuMeter.cpp"/>
       <FILE id="OaFdoe" name="AC_VuMeter.h" compile="0" resource="0" file="Source/AC_VuMeter.h"/>

@@ -14,6 +14,7 @@
 #include "AC_Gain.h"
 #include "AC_Delay.h"
 #include "AC_LFO.h"
+#include "AC_PresetManager.h"
 
 //==============================================================================
 /**
@@ -63,12 +64,18 @@ public:
     
     AudioProcessorValueTreeState parameters;
     
+    AC_PresetManager* getPresetManager(){
+        return mPresetManager.get();
+    }
+    
 private:
     
     std::unique_ptr<AC_Gain> mInputGain [2];
     std::unique_ptr<AC_Gain> mOutputGain [2];
     std::unique_ptr<AC_Delay> mDelay [2];
     std::unique_ptr<AC_LFO> mLFO [2];
+    
+    std::unique_ptr<AC_PresetManager> mPresetManager;
     
     void initializeDSP();
     AudioProcessorValueTreeState::ParameterLayout createParameterLayout();

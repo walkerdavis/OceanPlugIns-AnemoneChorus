@@ -30,6 +30,7 @@ AnemoneChorusAudioProcessor::AnemoneChorusAudioProcessor()
 #endif
 {
     initializeDSP();
+    mPresetManager = std::make_unique<AC_PresetManager>(this);
 }
 
 AnemoneChorusAudioProcessor::~AnemoneChorusAudioProcessor()
@@ -145,38 +146,41 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
     
-    //clear garbage
+    
+    
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
+    // get LFO params
+    float modulationrate = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationRate]);
+    float modulationPhaseOffset = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationPhaseOffset]);
+    float modulationDepth = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationDepth]);
+    
+    float modulationFeedback = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFeedback]);
+    float wetDry = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterWetDry]);
+    float delayType = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDelayType]);
+    
+    // get output buffer for each channel
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
         
         float inputGain = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterInputGain]);
         mInputGain[channel]->process(channelData,
-                                     inputGain,
-                                     channelData,
-                                     buffer.getNumSamples());
-        
-        
-        float rate = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationRate]);
-        if (channel==0){
-            rate = 0;
+                            inputGain,
+                            channelData,
+                            buffer.getNumSamples());
+        if (channel == 1){
+            modulationPhaseOffset = 0;
         }
         
-        float modulationDepth = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationDepth]);
-        mLFO[channel]->process(rate,
+        mLFO[channel]->process(modulationrate,
                                modulationDepth,
+                               modulationPhaseOffset,
                                buffer.getNumSamples());
         
-        float delayTime = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDelayTime]);
-        float delayFeedback = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFeedback]);
-        float wetDry = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterWetDry]);
-        float delayType = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDelayType]);
         mDelay[channel]->process(channelData,
-                                 delayTime,
-                                 delayFeedback,
+                                 modulationFeedback,
                                  wetDry,
                                  delayType,
                                  mLFO[channel]->getBuffer(),
@@ -184,10 +188,11 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                                  buffer.getNumSamples());
         
         float outputGain = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterOutputGain]);
+        
         mOutputGain[channel]->process(channelData,
-                                      outputGain,
-                                      channelData,
-                                      buffer.getNumSamples());
+                             outputGain,
+                             channelData,
+                             buffer.getNumSamples());
     }
 }
 
@@ -208,12 +213,31 @@ void AnemoneChorusAudioProcessor::getStateInformation (MemoryBlock& destData)
     // You should use this method to store your parameters in the memory block.
     // You could do that either as raw data, or use the XML or ValueTree classes
     // as intermediaries to make it easy to save and load complex data.
+    
+    XmlElement preset("AC_StateInfo");
+    XmlElement* presetBody = new XmlElement("AC_Preset");
+    
+    mPresetManager->getXmlForPreset(presetBody);
+    preset.addChildElement(presetBody);
+    copyXmlToBinary(preset, destData);
 }
 
 void AnemoneChorusAudioProcessor::setStateInformation (const void* data, int sizeInBytes)
 {
     // You should use this method to restore your parameters from this memory block,
     // whose contents will have been created by the getStateInformation() call.
+    
+    std::unique_ptr<XmlElement> xmlState;
+    xmlState.reset(getXmlFromBinary(data, sizeInBytes));
+    
+    if (xmlState != nullptr){
+        forEachXmlChildElement(*xmlState, subChild){
+            mPresetManager->loadPresetForXml(subChild);
+        }
+    } else {
+        jassert(false);
+    }
+    
 }
 
 float AnemoneChorusAudioProcessor::getInputGainMeterLevel(int inChannel)
@@ -230,8 +254,8 @@ float AnemoneChorusAudioProcessor::getOutputGainMeterLevel(int inChannel)
 
 void AnemoneChorusAudioProcessor::initializeDSP()
 {
+    
     for (int i = 0; i < 2; ++i){
-        
         mInputGain[i].reset(new AC_Gain());
         mOutputGain[i].reset(new AC_Gain());
         mDelay[i].reset(new AC_Delay());

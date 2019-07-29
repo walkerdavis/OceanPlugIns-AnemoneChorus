@@ -23,7 +23,7 @@ public:
     
     void setSampleRate(double inSampleRate);
     
-    void process(float inRate, float inDepth, int inNumSamples);
+    void process(float inRate, float inDepth, float inPhaseOffset, int inNumSamples);
     
     float* getBuffer();
     

@@ -33,9 +33,9 @@ void AC_LFO::setSampleRate(double inSampleRate)
     mSampleRate = inSampleRate;
 };
 
-void AC_LFO::process(float inRate, float inDepth, int inNumSamples)
+void AC_LFO::process(float inRate, float inDepth, float inPhaseOffset, int inNumSamples)
 {
-    const float rate = jmap(inRate, 0.0f, 1.0f, 0.01f, 10.0f);
+    const float rate = jmap(inRate, 0.0f, 1.0f, 0.01f, 5.0f);
     
     for (int i = 0; i < inNumSamples; i++){
         mPhase = mPhase + (rate / mSampleRate);
@@ -44,7 +44,14 @@ void AC_LFO::process(float inRate, float inDepth, int inNumSamples)
             mPhase -= 1;
         }
         
-        const float lfoPosition = sinf(mPhase * k2PI) * inDepth;
+        float phaseWithOffset = mPhase + inPhaseOffset;
+        
+        if (phaseWithOffset> 1){
+            phaseWithOffset -= 1;
+        }
+        
+        const float lfoPosition = sinf(phaseWithOffset * k2PI) * inDepth;       //kadenze sin function
+        //        const float lfoPosition = inDepth * sinf((k2PI * rate) + mPhase);
         mBuffer[i] = lfoPosition;
         
     }

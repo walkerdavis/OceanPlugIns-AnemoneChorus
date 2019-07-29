@@ -65,7 +65,7 @@ void AC_TopPanel::paint(Graphics& g)
     g.setFont(font_2);
     const int label_w = 200;
     
-    g.drawFittedText("Walker AUDIO PLUGIN",
+    g.drawFittedText("",
                      TOP_PANEL_WIDTH - label_w,
                      0,
                      label_w,
@@ -77,64 +77,62 @@ void AC_TopPanel::paint(Graphics& g)
 
 void AC_TopPanel::buttonClicked (Button* b)
 {
-//    KAP_PresetManager* presetManager = mProcessor->getPresetManager();
-//
-//    if (b == mNewPreset){
-//        presetManager->createNewPreset();
-//
-//        updatePresetComboBox();
-//    } else if (b == mSavePreset){
-//        presetManager->savePreset();
-//    } else if (b == mSaveAsPreset){
-//        displaySaveAsPopUp();
-//    }
+    AC_PresetManager* presetManager = mProcessor->getPresetManager();
+
+    if (b == mNewPreset){
+        presetManager->createNewPreset();
+
+        updatePresetComboBox();
+    } else if (b == mSavePreset){
+        presetManager->savePreset();
+    } else if (b == mSaveAsPreset){
+        displaySaveAsPopUp();
+    }
 }
 void AC_TopPanel::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 {
-//    if(comboBoxThatHasChanged == mPresetDisplay){
-//
-//        KAP_PresetManager* presetManager = mProcessor->getPresetManager();
-//
-//        const int index = mPresetDisplay->getSelectedItemIndex();
-//        presetManager->loadPreset(index);
-//    }
+    if(comboBoxThatHasChanged == mPresetDisplay){
+
+        AC_PresetManager* presetManager = mProcessor->getPresetManager();
+
+        const int index = mPresetDisplay->getSelectedItemIndex();
+        presetManager->loadPreset(index);
+    }
 }
 
 void AC_TopPanel::displaySaveAsPopUp()
 {
-//    KAP_PresetManager* presetManager = mProcessor->getPresetManager();
-//
-//    String currentPresetName = presetManager->getCurrentPresetName();
-//
-//    AlertWindow window ("Save As", "Please enter a name for your preset", AlertWindow::NoIcon);
-//
-//    window.centreAroundComponent(this, getWidth(), getHeight());
-//    window.addTextEditor("presetName", currentPresetName, "preset name: ");
-//    window.addButton("Confirm", 1);
-//    window.addButton("Cancel", 0);
-//
-//    if(window.runModalLoop()){
-//
-//        String presetName = window.getTextEditor("presetName")->getText();
-//        presetManager->saveAsPreset(presetName);
-//
-//        updatePresetComboBox();
-//    }
-    
-    
+    AC_PresetManager* presetManager = mProcessor->getPresetManager();
+
+    String currentPresetName = presetManager->getCurrentPresetName();
+
+    AlertWindow window ("Save As", "Please enter a name for your preset", AlertWindow::NoIcon);
+
+    window.centreAroundComponent(this, getWidth(), getHeight());
+    window.addTextEditor("presetName", currentPresetName, "preset name: ");
+    window.addButton("Confirm", 1);
+    window.addButton("Cancel", 0);
+
+    if(window.runModalLoop()){
+
+        String presetName = window.getTextEditor("presetName")->getText();
+        presetManager->saveAsPreset(presetName);
+
+        updatePresetComboBox();
+    }
 }
 void AC_TopPanel::updatePresetComboBox()
 {
-//    KAP_PresetManager* presetManager = mProcessor->getPresetManager();
-//    String presetName = presetManager->getCurrentPresetName();
-//    
-//    mPresetDisplay->clear(dontSendNotification);
-//    
-//    const int numPresets = presetManager->getNumberOfPresets();
-//    
-//    for (int i = 0; i < numPresets; i ++){
-//        mPresetDisplay->addItem(presetManager->getPresetName(i), (i+1));
-//    }
-//    
-//    mPresetDisplay->setText(presetManager->getCurrentPresetName());
+    AC_PresetManager* presetManager = mProcessor->getPresetManager();
+    String presetName = presetManager->getCurrentPresetName();
+    
+    mPresetDisplay->clear(dontSendNotification);
+    
+    const int numPresets = presetManager->getNumberOfPresets();
+    
+    for (int i = 0; i < numPresets; i ++){
+        mPresetDisplay->addItem(presetManager->getPresetName(i), (i+1));
+    }
+    
+    mPresetDisplay->setText(presetManager->getCurrentPresetName());
 }

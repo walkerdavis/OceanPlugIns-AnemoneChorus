@@ -39,13 +39,12 @@ void AC_Delay::reset()
 };
 
 void AC_Delay::process(float *inAudio,
-                        float inTime,
-                        float inFeedback,
-                        float inWetDry,
-                        float inType,
-                        float* inModulationBuffer,
-                        float *outAudio,
-                        int inNumSamplesToRender)
+                      float inFeedback,
+                      float inWetDry,
+                      float inType,
+                      float* inModulationBuffer,
+                      float *outAudio,
+                      int inNumSamplesToRender)
 {
     const float wet = inWetDry;
     const float dry = 1.0 - wet;
@@ -56,15 +55,10 @@ void AC_Delay::process(float *inAudio,
     }
     
     
-    
     for (int i = 0; i < inNumSamplesToRender; i++){
         
-        if((int)inType == kAC_DelayType_Delay){
-            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - inTime);
-        } else {
-            const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
-            mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));
-        }
+        const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
+        mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));
         
         const double delayTimeInSamples = ((mTimeSmoothed) * mSampleRate);
         const double sample = getInterpolatedSample(delayTimeInSamples);

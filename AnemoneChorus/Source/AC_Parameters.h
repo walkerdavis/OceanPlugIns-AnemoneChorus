@@ -19,6 +19,7 @@ enum AC_Parameters
     kAC_ParameterOutputGain,
     kAC_ModulationRate,
     kAC_ModulationDepth,
+    kAC_ModulationPhaseOffset,
     kAC_Parameter_TotalNumParameters
 };
 
@@ -32,6 +33,7 @@ static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
     "OutputGain",
     "ModulationRate",
     "ModulationDepth",
+    "ModulationPhaseOffset",
 };
 
 static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
@@ -44,6 +46,7 @@ static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
     "Output Gain",
     "Modulation Rate",
     "Modulation Depth",
+    "Modulation Phase Offset",
 };
 
 static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
@@ -56,4 +59,5 @@ static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
     0.5f,
     0.3f,
     0.8,
+    0.f,
 };
