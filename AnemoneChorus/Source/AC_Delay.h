@@ -30,9 +30,9 @@ public:
     void reset();
     
     void process(float *inAudio,
+                 float inWidth,
                  float inFeedback,
                  float inWetDry,
-//                 float inType,
                  float* inModulationBuffer,
                  float *outAudio,
                  int inNumSamplesToRender);
@@ -46,6 +46,7 @@ private:
     double mFeedbackSample;
     
     float mTimeSmoothed;
+    float mWidthSmoothed;
     
     int mDelayIndex;
 };

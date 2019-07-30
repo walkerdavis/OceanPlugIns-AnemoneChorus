@@ -26,7 +26,6 @@ public:
     
     void mouseExit (const MouseEvent& event) override;
     
-    
     void paint(Graphics& g) override;
     
     

@@ -16,6 +16,7 @@ AC_Delay::AC_Delay()
 :  mSampleRate(-1),
     mFeedbackSample(0.0),
     mTimeSmoothed(0),
+    mWidthSmoothed(0.01),
     mDelayIndex(0)
 
 {
@@ -39,9 +40,9 @@ void AC_Delay::reset()
 };
 
 void AC_Delay::process(float *inAudio,
+                      float inWidth,
                       float inFeedback,
                       float inWetDry,
-//                      float inType,
                       float* inModulationBuffer,
                       float *outAudio,
                       int inNumSamplesToRender)
@@ -50,14 +51,14 @@ void AC_Delay::process(float *inAudio,
     const float dry = 1.0 - wet;
     
     float feedbackMapped = 0;
-//    if(inType == kAC_DelayType_Delay){
-//        feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 1.20f);
-//    }
+    feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.f, 1.2f);
     
+    float widthMapped = 0;
+    widthMapped = jmap(inWidth, 0.0f, 1.0f, 0.003f, 0.02f);
     
     for (int i = 0; i < inNumSamplesToRender; i++){
         
-        const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
+        const double delayTimeModulation = (widthMapped + (0.002 * inModulationBuffer[i]));
         mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));
         
         const double delayTimeInSamples = ((mTimeSmoothed) * mSampleRate);

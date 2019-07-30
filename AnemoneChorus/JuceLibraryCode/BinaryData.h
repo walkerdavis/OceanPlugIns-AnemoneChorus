@@ -11,11 +11,14 @@ namespace BinaryData
     extern const char*   ac_bg_png;
     const int            ac_bg_pngSize = 2144754;
 
+    extern const char*   ac_knob2_png;
+    const int            ac_knob2_pngSize = 664228;
+
     extern const char*   ac_knob_png;
     const int            ac_knob_pngSize = 743892;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
-    const int namedResourceListSize = 2;
+    const int namedResourceListSize = 3;
 
     // Points to the start of a list of resource names.
     extern const char* namedResourceList[];

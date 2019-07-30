@@ -33,7 +33,10 @@ void AC_LFO::setSampleRate(double inSampleRate)
     mSampleRate = inSampleRate;
 };
 
-void AC_LFO::process(float inRate, float inDepth, float inPhaseOffset, int inNumSamples)
+void AC_LFO::process(float inRate,
+                     float inDepth,
+                     float inPhaseOffset,
+                     int inNumSamples)
 {
     const float rate = jmap(inRate, 0.0f, 1.0f, 0.01f, 5.0f);
     

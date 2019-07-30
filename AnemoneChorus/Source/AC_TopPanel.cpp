@@ -61,17 +61,17 @@ void AC_TopPanel::paint(Graphics& g)
 {
     AC_PanelBase::paint(g);
     
-    g.setColour(AC_Colour_1);
-    g.setFont(font_2);
-    const int label_w = 200;
-    
-    g.drawFittedText("",
-                     TOP_PANEL_WIDTH - label_w,
-                     0,
-                     label_w,
-                     getHeight(),
-                     Justification::centredRight,
-                     1);
+//    g.setColour(AC_Colour_1);
+//    g.setFont(font_2);
+//    const int label_w = 200;
+//    
+//    g.drawFittedText("",
+//                     TOP_PANEL_WIDTH - label_w,
+//                     0,
+//                     label_w,
+//                     getHeight(),
+//                     Justification::centredRight,
+//                     1);
 }
 
 

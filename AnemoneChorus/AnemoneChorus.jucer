@@ -7,15 +7,8 @@
             file="Source/AC_CenterPanel.cpp"/>
       <FILE id="XbOrCC" name="AC_CenterPanel.h" compile="0" resource="0"
             file="Source/AC_CenterPanel.h"/>
-      <FILE id="jrswCH" name="AC_CenterPanelMenuBar.cpp" compile="1" resource="0"
-            file="Source/AC_CenterPanelMenuBar.cpp"/>
-      <FILE id="xsBRY5" name="AC_CenterPanelMenuBar.h" compile="0" resource="0"
-            file="Source/AC_CenterPanelMenuBar.h"/>
       <FILE id="C5MDzD" name="AC_FXPanel.cpp" compile="1" resource="0" file="Source/AC_FXPanel.cpp"/>
       <FILE id="sHJBt5" name="AC_FXPanel.h" compile="0" resource="0" file="Source/AC_FXPanel.h"/>
-      <FILE id="WFzFXT" name="AC_GainPanel.cpp" compile="1" resource="0"
-            file="Source/AC_GainPanel.cpp"/>
-      <FILE id="GxyRWf" name="AC_GainPanel.h" compile="0" resource="0" file="Source/AC_GainPanel.h"/>
       <FILE id="navqbJ" name="AC_MainPanel.cpp" compile="1" resource="0"
             file="Source/AC_MainPanel.cpp"/>
       <FILE id="E7ePqa" name="AC_MainPanel.h" compile="0" resource="0" file="Source/AC_MainPanel.h"/>
@@ -75,6 +68,7 @@
     </GROUP>
     <GROUP id="{3BBD6528-662D-B7EF-9733-F8900187DD7E}" name="Assets">
       <FILE id="oLtNYJ" name="ac_bg.png" compile="0" resource="1" file="Assets/ac_bg.png"/>
+      <FILE id="LNFoYD" name="ac_knob2.png" compile="0" resource="1" file="Assets/ac_knob2.png"/>
       <FILE id="STGjQd" name="ac_knob.png" compile="0" resource="1" file="Assets/ac_knob.png"/>
     </GROUP>
   </MAINGROUP>

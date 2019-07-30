@@ -13,7 +13,6 @@
 #include "AC_PanelBase.h"
 
 #include "AC_TopPanel.h"
-#include "AC_GainPanel.h"
 #include "AC_CenterPanel.h"
 
 class AC_MainPanel
@@ -27,7 +26,5 @@ public:
 private:
     
     ScopedPointer<AC_TopPanel> mTopPanel;
-    ScopedPointer<AC_GainPanel> mInputGainPanel;
-    ScopedPointer<AC_GainPanel> mOutputGainPanel;
     ScopedPointer<AC_CenterPanel> mCenterPanel;
 };

@@ -12,52 +12,53 @@
 enum AC_Parameters
 {
     kAC_ParameterInputGain = 0,
-    kAC_ParameterDelayTime,
-    kAC_ParameterFeedback,
-    kAC_ParameterWetDry,
-//    kAC_ParameterDelayType,    //delay or chorus?
-    kAC_ParameterOutputGain,
     kAC_ModulationRate,
+    kAC_ModulationWidth,
     kAC_ModulationDepth,
+    
+    kAC_ParameterFeedback,
     kAC_ModulationPhaseOffset,
+    kAC_ParameterWetDry,
+    kAC_ParameterOutputGain,
+    
     kAC_Parameter_TotalNumParameters
 };
 
 static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
 {
     "InputGain",
-    "Time",
-    "Feedback",
-    "WetDry",
-//    "Type",
-    "OutputGain",
     "ModulationRate",
+    "ModulationWidth",
     "ModulationDepth",
+    
+    "Feedback",
     "ModulationPhaseOffset",
+    "WetDry",
+    "OutputGain",
 };
 
 static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 {
     "Input Gain",
-    "Delay Time",
-    "Delay Feedback",
+    "Mod Rate",
+    "Mod Width",
+    "Mod Depth",
+    
+    "Mod Fdbk",
+    "Mod Phase Offset",
     "Wet Dry",
-//    "Delay Type",
     "Output Gain",
-    "Modulation Rate",
-    "Modulation Depth",
-    "Modulation Phase Offset",
 };
 
 static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
 {
     0.5f,
-    0.1f,
+    0.2f,
     0.6f,
+    0.4f,
+    
+    0.25f,
+    0.5,
     0.5f,
-//    1.f,
     0.5f,
-    0.3f,
-    0.8,
-    0.f,
 };

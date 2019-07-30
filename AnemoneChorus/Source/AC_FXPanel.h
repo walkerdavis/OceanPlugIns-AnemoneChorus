@@ -12,17 +12,16 @@
 
 #include "AC_PanelBase.h"
 #include "AC_ParameterSlider.h"
+#include "AC_LookAndFeel.h"
 
 enum AC_FXPanelStyle
 {
-//    kAC_FXPanelStyle_Delay,
     kAC_FXPanelStyle_Chorus,
     kAC_FXPanelStyle_TotalNumStyles
 };
 
 class AC_FXPanel
-:   public AC_PanelBase//,
-//public ComboBox::Listener
+:   public AC_PanelBase
 {
 public:
     
@@ -32,8 +31,6 @@ public:
     void setFXPanelStyle(AC_FXPanelStyle inStyle);
     
     void paint(Graphics& g) override;
-    
-//    void comboBoxChanged (ComboBox* comboBoxThatHasChanged) override;
     
 private:
     AC_FXPanelStyle mStyle;

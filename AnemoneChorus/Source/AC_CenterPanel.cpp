@@ -15,17 +15,11 @@ AC_CenterPanel::AC_CenterPanel(AnemoneChorusAudioProcessor* inProcessor)\
 {
     setSize(CENTER_PANEL_WIDTH, CENTER_PANEL_HEIGHT);
     
-    mMenuBar = new AC_CenterPanelMenuBar(inProcessor);
-    mMenuBar->setTopLeftPosition(0,0);
-    addAndMakeVisible(mMenuBar);
-    
     mFXPanel = new AC_FXPanel(inProcessor);
-    mFXPanel->setTopLeftPosition(0, CENTER_PANEL_MENU_BAR_HEIGHT);
+    mFXPanel->setTopLeftPosition(0, 0);
     addAndMakeVisible(mFXPanel);
     
-//    mMenuBar->addFXTypeComboBoxListener(mFXPanel);
 }
 AC_CenterPanel::~AC_CenterPanel()
 {
-//    mMenuBar->removeFXTypeComboBoxListener(mFXPanel);
 }

@@ -21,18 +21,8 @@ AC_MainPanel::AC_MainPanel(AnemoneChorusAudioProcessor* inProcessor)
     mTopPanel->setTopLeftPosition(0, 0);
     addAndMakeVisible(mTopPanel);
     
-    mInputGainPanel = new AC_GainPanel(inProcessor);
-    mInputGainPanel->setTopLeftPosition(0, TOP_PANEL_HEIGHT);
-    mInputGainPanel->setParameterID(kAC_ParameterInputGain);
-    addAndMakeVisible(mInputGainPanel);
-    
-    mOutputGainPanel = new AC_GainPanel(inProcessor);
-    mOutputGainPanel->setTopLeftPosition(MAIN_PANEL_WIDTH - GAIN_PANEL_WIDTH, TOP_PANEL_HEIGHT);
-    mOutputGainPanel->setParameterID(kAC_ParameterOutputGain);
-    addAndMakeVisible(mOutputGainPanel);
-    
     mCenterPanel = new AC_CenterPanel(inProcessor);
-    mCenterPanel->setTopLeftPosition(GAIN_PANEL_WIDTH, TOP_PANEL_HEIGHT);
+    mCenterPanel->setTopLeftPosition(0, TOP_PANEL_HEIGHT);
     addAndMakeVisible(mCenterPanel);
 }
 AC_MainPanel::~AC_MainPanel()
