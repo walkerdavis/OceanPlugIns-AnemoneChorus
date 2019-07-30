@@ -18,16 +18,16 @@ AC_CenterPanelMenuBar::AC_CenterPanelMenuBar(AnemoneChorusAudioProcessor* inProc
     
     const int width = 85;
     
-    mFXTypeComboBox = new AC_ParameterComboBox(mProcessor->parameters,
-                                                AC_ParameterID[kAC_ParameterDelayType]);
-    mFXTypeComboBox->setBounds(getWidth() - width, 0, width, getHeight());
-    mFXTypeComboBox->addItem("DELAY", 1);
-    mFXTypeComboBox->addItem("CHORUS", 2);
+//    mFXTypeComboBox = new AC_ParameterComboBox(mProcessor->parameters,
+//                                                AC_ParameterID[kAC_ParameterDelayType]);
+//    mFXTypeComboBox->setBounds(getWidth() - width, 0, width, getHeight());
+//    mFXTypeComboBox->addItem("DELAY", 1);
+//    mFXTypeComboBox->addItem("CHORUS", 2);
     
-    float delayType = *mProcessor->parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDelayType]);
-    mFXTypeComboBox->setSelectedItemIndex((int)delayType,
-                                          dontSendNotification);
-    addAndMakeVisible(mFXTypeComboBox);
+//    float delayType = *mProcessor->parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDelayType]);
+//    mFXTypeComboBox->setSelectedItemIndex((int)delayType,
+//                                          dontSendNotification);
+//    addAndMakeVisible(mFXTypeComboBox);
 }
 AC_CenterPanelMenuBar::~AC_CenterPanelMenuBar()
 {

@@ -41,7 +41,7 @@ void AC_Delay::reset()
 void AC_Delay::process(float *inAudio,
                       float inFeedback,
                       float inWetDry,
-                      float inType,
+//                      float inType,
                       float* inModulationBuffer,
                       float *outAudio,
                       int inNumSamplesToRender)
@@ -50,9 +50,9 @@ void AC_Delay::process(float *inAudio,
     const float dry = 1.0 - wet;
     
     float feedbackMapped = 0;
-    if(inType == kAC_DelayType_Delay){
-        feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 1.20f);
-    }
+//    if(inType == kAC_DelayType_Delay){
+//        feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.0f, 1.20f);
+//    }
     
     
     for (int i = 0; i < inNumSamplesToRender; i++){

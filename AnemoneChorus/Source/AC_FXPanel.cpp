@@ -18,7 +18,8 @@ AC_FXPanel::AC_FXPanel(AnemoneChorusAudioProcessor* inProcessor)
     setSize(FX_PANEL_WIDTH,
             FX_PANEL_HEIGHT);
     
-    const int currentStyle = (int)*mProcessor->parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDelayType]);
+    const int currentStyle = kAC_FXPanelStyle_Chorus;
+//    = (int)*mProcessor->parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDelayType]);
     setFXPanelStyle((AC_FXPanelStyle)currentStyle);
 }
 
@@ -34,12 +35,12 @@ void AC_FXPanel::paint(Graphics& g)
     
     switch (mStyle)
     {
-        case (kAC_FXPanelStyle_Delay):{
-            label = "DELAY";
-        } break;
+//        case (kAC_FXPanelStyle_Delay):{
+//            label = "";
+//        } break;
             
         case (kAC_FXPanelStyle_Chorus):{
-            label = "CHORUS";
+            label = "";
         } break;
             
         default:
@@ -75,37 +76,37 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
     
     switch (mStyle)
     {
-        case (kAC_FXPanelStyle_Delay):{
-            
-            //delay time //follow order create, set bounds, addAndMakeVisible
-            AC_ParameterSlider* time = new AC_ParameterSlider(mProcessor->parameters,
-                                                                AC_ParameterID[kAC_ParameterDelayTime],
-                                                                AC_ParameterLabel[kAC_ParameterDelayTime]);
-            time->setBounds(x, y, slider_size, slider_size);
-            addAndMakeVisible(time);
-            mSliders.add(time);
-            x = x + (slider_size * 2);
-            
-            //delay feedback
-            AC_ParameterSlider* feedback = new AC_ParameterSlider(mProcessor->parameters,
-                                                                    AC_ParameterID[kAC_ParameterFeedback],
-                                                                    AC_ParameterLabel[kAC_ParameterFeedback]);
-            feedback->setBounds(x, y, slider_size, slider_size);
-            addAndMakeVisible(feedback);
-            mSliders.add(feedback);
-            x = x + (slider_size * 2);
-            
-            //delay wetdry
-            AC_ParameterSlider* wetdry = new AC_ParameterSlider(mProcessor->parameters,
-                                                                  AC_ParameterID[kAC_ParameterWetDry],
-                                                                  AC_ParameterLabel[kAC_ParameterWetDry]);
-            wetdry->setBounds(x, y, slider_size, slider_size);
-            addAndMakeVisible(wetdry);
-            mSliders.add(wetdry);
-            x = x + (slider_size * 2);
-            
-            
-        } break;
+//        case (kAC_FXPanelStyle_Delay):{
+//            
+//            //delay time //follow order create, set bounds, addAndMakeVisible
+//            AC_ParameterSlider* time = new AC_ParameterSlider(mProcessor->parameters,
+//                                                                AC_ParameterID[kAC_ParameterDelayTime],
+//                                                                AC_ParameterLabel[kAC_ParameterDelayTime]);
+//            time->setBounds(x, y, slider_size, slider_size);
+//            addAndMakeVisible(time);
+//            mSliders.add(time);
+//            x = x + (slider_size * 2);
+//            
+//            //delay feedback
+//            AC_ParameterSlider* feedback = new AC_ParameterSlider(mProcessor->parameters,
+//                                                                    AC_ParameterID[kAC_ParameterFeedback],
+//                                                                    AC_ParameterLabel[kAC_ParameterFeedback]);
+//            feedback->setBounds(x, y, slider_size, slider_size);
+//            addAndMakeVisible(feedback);
+//            mSliders.add(feedback);
+//            x = x + (slider_size * 2);
+//            
+//            //delay wetdry
+//            AC_ParameterSlider* wetdry = new AC_ParameterSlider(mProcessor->parameters,
+//                                                                  AC_ParameterID[kAC_ParameterWetDry],
+//                                                                  AC_ParameterLabel[kAC_ParameterWetDry]);
+//            wetdry->setBounds(x, y, slider_size, slider_size);
+//            addAndMakeVisible(wetdry);
+//            mSliders.add(wetdry);
+//            x = x + (slider_size * 2);
+//            
+//            
+//        } break;
             
         case (kAC_FXPanelStyle_Chorus):{
             
@@ -151,9 +152,9 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
 }
 
 
-void AC_FXPanel::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
-{
-    AC_FXPanelStyle style = (AC_FXPanelStyle)comboBoxThatHasChanged->getSelectedItemIndex();
-    
-    setFXPanelStyle(style);
-}
+//void AC_FXPanel::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
+//{
+//    AC_FXPanelStyle style = (AC_FXPanelStyle)comboBoxThatHasChanged->getSelectedItemIndex();
+//    
+//    setFXPanelStyle(style);
+//}

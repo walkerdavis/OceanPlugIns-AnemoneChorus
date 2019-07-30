@@ -35,10 +35,10 @@ void AC_PanelBase::mouseExit (const MouseEvent& event)
 
 void AC_PanelBase::paint(Graphics& g)
 {
-    if(isMouseOver(true)){
-        const Colour hoverColour = Colour(Colours::black).withAlpha(0.4f);
-        g.setColour(hoverColour);
-        g.fillAll();
-    }
+//    if(isMouseOver(true)){
+//        const Colour hoverColour = Colour(Colours::black).withAlpha(0.4f);
+//        g.setColour(hoverColour);
+//        g.fillAll();
+//    }
     
 }

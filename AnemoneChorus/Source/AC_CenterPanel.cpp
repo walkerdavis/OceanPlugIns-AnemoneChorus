@@ -23,9 +23,9 @@ AC_CenterPanel::AC_CenterPanel(AnemoneChorusAudioProcessor* inProcessor)\
     mFXPanel->setTopLeftPosition(0, CENTER_PANEL_MENU_BAR_HEIGHT);
     addAndMakeVisible(mFXPanel);
     
-    mMenuBar->addFXTypeComboBoxListener(mFXPanel);
+//    mMenuBar->addFXTypeComboBoxListener(mFXPanel);
 }
 AC_CenterPanel::~AC_CenterPanel()
 {
-    mMenuBar->removeFXTypeComboBoxListener(mFXPanel);
+//    mMenuBar->removeFXTypeComboBoxListener(mFXPanel);
 }
