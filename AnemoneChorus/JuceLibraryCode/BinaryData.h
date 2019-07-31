@@ -8,11 +8,11 @@
 
 namespace BinaryData
 {
-    extern const char*   ac_bg_png;
-    const int            ac_bg_pngSize = 2144754;
-
     extern const char*   ac_knob2_png;
     const int            ac_knob2_pngSize = 664228;
+
+    extern const char*   bk_v2_png;
+    const int            bk_v2_pngSize = 1177926;
 
     extern const char*   ac_knob_png;
     const int            ac_knob_pngSize = 743892;

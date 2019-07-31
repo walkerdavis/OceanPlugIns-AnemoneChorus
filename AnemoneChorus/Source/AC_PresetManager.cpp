@@ -18,7 +18,7 @@
 
 AC_PresetManager::AC_PresetManager(AudioProcessor* inProcessor)
 :   mCurrentPresetSaved(false),
-    mCurrentPresetName(" ---"),
+    mCurrentPresetName(" --- "),
     mProcessor(inProcessor)
 {
     const String pluginName = (String) mProcessor->getName();
@@ -98,7 +98,7 @@ void AC_PresetManager::createNewPreset()
     }
     
     mCurrentPresetSaved = false;
-    mCurrentPresetName = "Untitled";
+    mCurrentPresetName = "Untitled Preset";
 }
 
 void AC_PresetManager::savePreset()

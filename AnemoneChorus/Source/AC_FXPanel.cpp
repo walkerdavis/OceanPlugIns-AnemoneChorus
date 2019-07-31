@@ -70,6 +70,8 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
     const float slider_offset = 1.5f;
     int x = 50;
     int y = (getHeight() * .5) - (slider_size * .5);
+    //width = 750
+    //height = 300
     
     switch (mStyle)
     {
@@ -80,10 +82,9 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
             AC_ParameterSlider* gain_in = new AC_ParameterSlider(mProcessor->parameters,
                                                                AC_ParameterID[kAC_ParameterInputGain],
                                                                AC_ParameterLabel[kAC_ParameterInputGain]);
-            gain_in->setBounds(x, y, slider_size, slider_size);
+            gain_in->setBounds(140, 160, 62, 62);
             addAndMakeVisible(gain_in);
             mSliders.add(gain_in);
-            x = x + (slider_size * slider_offset);
             
             //2 chorus rate
             AC_ParameterSlider* rate = new AC_ParameterSlider(mProcessor->parameters,
@@ -91,64 +92,57 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
                                                                  AC_ParameterLabel[kAC_ModulationRate]);
 //            rate.setLookAndFeel(&AC_OtherLookAndFeel);
             
-            rate->setBounds(x, y, slider_size, slider_size);
+            rate->setBounds(125, 90, 47, 47);
             addAndMakeVisible(rate);
             mSliders.add(rate);
-            x = x + (slider_size * slider_offset);
             
             //3 chorus depth
             AC_ParameterSlider* depth = new AC_ParameterSlider(mProcessor->parameters,
                                                                  AC_ParameterID[kAC_ModulationDepth],
                                                                  AC_ParameterLabel[kAC_ModulationDepth]);
-            depth->setBounds(x, y, slider_size, slider_size);
+            depth->setBounds(200, 60, 48, 48);
             addAndMakeVisible(depth);
             mSliders.add(depth);
-            x = x + (slider_size * slider_offset);
             
             //4 chorus width
             AC_ParameterSlider* width = new AC_ParameterSlider(mProcessor->parameters,
                                                                AC_ParameterID[kAC_ModulationWidth],
                                                                AC_ParameterLabel[kAC_ModulationWidth]);
-            width->setBounds(x, y, slider_size, slider_size);
+            width->setBounds(210, 185, 42, 42);
             addAndMakeVisible(width);
             mSliders.add(width);
-            x = x + (slider_size * slider_offset);
             
             //5 chorus phase offset
             AC_ParameterSlider* feedback = new AC_ParameterSlider(mProcessor->parameters,
                                                                       AC_ParameterID[kAC_ParameterFeedback],
                                                                       AC_ParameterLabel[kAC_ParameterFeedback]);
-            feedback->setBounds(x, y, slider_size, slider_size);
+            feedback->setBounds(580, 45, 47, 47);
             addAndMakeVisible(feedback);
             mSliders.add(feedback);
-            x = x + (slider_size * slider_offset);
             
             //6 chorus phase offset
             AC_ParameterSlider* phase_offset = new AC_ParameterSlider(mProcessor->parameters,
                                                                AC_ParameterID[kAC_ModulationPhaseOffset],
                                                                AC_ParameterLabel[kAC_ModulationPhaseOffset]);
-            phase_offset->setBounds(x, y, slider_size, slider_size);
+            phase_offset->setBounds(585, 155, 47, 47);
             addAndMakeVisible(phase_offset);
             mSliders.add(phase_offset);
-            x = x + (slider_size * slider_offset);
             
             //7 chorus wetdry
             AC_ParameterSlider* wetdry = new AC_ParameterSlider(mProcessor->parameters,
                                                                   AC_ParameterID[kAC_ParameterWetDry],
                                                                   AC_ParameterLabel[kAC_ParameterWetDry]);
-            wetdry->setBounds(x, y, slider_size, slider_size);
+            wetdry->setBounds(670, 80, slider_size, slider_size);
             addAndMakeVisible(wetdry);
             mSliders.add(wetdry);
-            x = x + (slider_size * slider_offset);
             
             //8 output gain
             AC_ParameterSlider* gain_out = new AC_ParameterSlider(mProcessor->parameters,
                                                                  AC_ParameterID[kAC_ParameterOutputGain],
                                                                  AC_ParameterLabel[kAC_ParameterOutputGain]);
-            gain_out->setBounds(x, y, slider_size, slider_size);
+            gain_out->setBounds(670, 160, 62, 62);
             addAndMakeVisible(gain_out);
             mSliders.add(gain_out);
-            x = x + (slider_size * slider_offset);
             
         } break;
             

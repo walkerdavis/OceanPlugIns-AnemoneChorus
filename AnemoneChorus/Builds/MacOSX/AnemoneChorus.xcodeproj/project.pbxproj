@@ -749,13 +749,6 @@
 			path = "../../Source/AC_ParameterComboBox.cpp";
 			sourceTree = "SOURCE_ROOT";
 		};
-		D429B051600E464867AB9CC6 = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = "ac_bg.png";
-			path = "../../Assets/ac_bg.png";
-			sourceTree = "SOURCE_ROOT";
-		};
 		D438D1AF1A443029FB04038D = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.c.h;
@@ -796,6 +789,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = PluginEditor.h;
 			path = ../../Source/PluginEditor.h;
+			sourceTree = "SOURCE_ROOT";
+		};
+		E0C7776F230A3D68630946D6 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			name = "bk_v2.png";
+			path = "../../Assets/bk_v2.png";
 			sourceTree = "SOURCE_ROOT";
 		};
 		E41E7AD14380DB57520D3E43 = {
@@ -974,8 +974,8 @@
 		B2E8479FED1C083DE020A48A = {
 			isa = PBXGroup;
 			children = (
-				D429B051600E464867AB9CC6,
 				98391C1BE34E70792292C28C,
+				E0C7776F230A3D68630946D6,
 				1CE395217502B2A5FF8CBDCE,
 			);
 			name = Assets;

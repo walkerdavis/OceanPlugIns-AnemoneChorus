@@ -26,8 +26,8 @@ AnemoneChorusAudioProcessorEditor::AnemoneChorusAudioProcessorEditor (AnemoneCho
     setLookAndFeel(mLookAndFeel.get());
     LookAndFeel::setDefaultLookAndFeel(mLookAndFeel.get());
     
-    mBackgroundImage = ImageCache::getFromMemory(BinaryData::ac_bg_png,
-                                                 BinaryData::ac_bg_pngSize);
+    mBackgroundImage = ImageCache::getFromMemory(BinaryData::bk_v2_png,
+                                                 BinaryData::bk_v2_pngSize);
     
     mMainPanel.reset(new AC_MainPanel(&processor));
     addAndMakeVisible(mMainPanel.get());
