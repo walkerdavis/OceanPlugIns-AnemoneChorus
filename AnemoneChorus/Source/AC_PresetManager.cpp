@@ -24,7 +24,7 @@ AC_PresetManager::AC_PresetManager(AudioProcessor* inProcessor)
     const String pluginName = (String) mProcessor->getName();
     
     mPresetDirectory =
-    (File::getSpecialLocation(File::userDesktopDirectory)).getFullPathName() + directorySeperator + pluginName;
+    (File::getSpecialLocation(File::userDocumentsDirectory)).getFullPathName() + directorySeperator + pluginName;
     
     if(~File(mPresetDirectory).exists()){
         File(mPresetDirectory).createDirectory();
