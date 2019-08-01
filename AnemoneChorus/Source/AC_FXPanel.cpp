@@ -132,7 +132,7 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
             AC_ParameterSlider* wetdry = new AC_ParameterSlider(mProcessor->parameters,
                                                                   AC_ParameterID[kAC_ParameterWetDry],
                                                                   AC_ParameterLabel[kAC_ParameterWetDry]);
-            wetdry->setBounds(670, 80, slider_size, slider_size);
+            wetdry->setBounds(680, 90, slider_size, slider_size);
             addAndMakeVisible(wetdry);
             mSliders.add(wetdry);
             

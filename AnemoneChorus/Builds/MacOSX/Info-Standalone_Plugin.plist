@@ -8,7 +8,7 @@
     <key>CFBundleIconFile</key>
     <string></string>
     <key>CFBundleIdentifier</key>
-    <string>com.yourcompany.AnemoneChorus</string>
+    <string>com.WalkerOceanPlugins.AnemoneChorus</string>
     <key>CFBundleName</key>
     <string>AnemoneChorus</string>
     <key>CFBundleDisplayName</key>
