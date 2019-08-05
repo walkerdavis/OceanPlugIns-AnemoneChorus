@@ -12,7 +12,8 @@
 #include "AC_AudioHelpers.h"
 
 AC_Gain::AC_Gain()
-:   mOutputSmoothed(0)
+:   mOutputSmoothed(0),
+    mGainSmoothed(0)
 {
     
 }
@@ -31,7 +32,9 @@ void AC_Gain::process(float* inAudio,
     gainMapped = Decibels::decibelsToGain(gainMapped, -24.0f);
     
     for (int i = 0; i < inNumSamplesToRender; i++){
-        outAudio[i] = inAudio[i] * gainMapped;
+        mGainSmoothed = mGainSmoothed - kParameterSmoothingCoeff_Fine * (mGainSmoothed - (gainMapped));
+        
+        outAudio[i] = inAudio[i] * mGainSmoothed;
     }
     
     float absValue = fabs(outAudio[0]);

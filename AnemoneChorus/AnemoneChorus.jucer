@@ -53,6 +53,10 @@
     <GROUP id="{31A456AA-EB71-73F7-D338-8BD7918BB8E7}" name="DSP">
       <FILE id="ZAj4op" name="AC_Delay.cpp" compile="1" resource="0" file="Source/AC_Delay.cpp"/>
       <FILE id="FX5sCf" name="AC_Delay.h" compile="0" resource="0" file="Source/AC_Delay.h"/>
+      <FILE id="PqiOXB" name="AC_EnvelopeFollower.cpp" compile="1" resource="0"
+            file="Source/AC_EnvelopeFollower.cpp"/>
+      <FILE id="mSHhI5" name="AC_EnvelopeFollower.h" compile="0" resource="0"
+            file="Source/AC_EnvelopeFollower.h"/>
       <FILE id="zXKAAR" name="AC_Gain.cpp" compile="1" resource="0" file="Source/AC_Gain.cpp"/>
       <FILE id="XkpP8y" name="AC_Gain.h" compile="0" resource="0" file="Source/AC_Gain.h"/>
       <FILE id="j0aEsp" name="AC_LFO.cpp" compile="1" resource="0" file="Source/AC_LFO.cpp"/>

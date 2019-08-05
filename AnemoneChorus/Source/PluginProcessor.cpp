@@ -155,7 +155,6 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     float modulationrate = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationRate]);
     float modulationPhaseOffset = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationPhaseOffset]);
     float modulationDepth = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationDepth]);
-    float modulationWidth = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationWidth]);
     
     float modulationFeedback = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFeedback]);
     float wetDry = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterWetDry]);
@@ -181,7 +180,6 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                                buffer.getNumSamples());
         
         mDelay[channel]->process(channelData,
-                                 modulationWidth,
                                  modulationFeedback,
                                  wetDry,
                                  mLFO[channel]->getBuffer(),

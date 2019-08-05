@@ -104,13 +104,9 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
             addAndMakeVisible(depth);
             mSliders.add(depth);
             
-            //4 chorus width
-            AC_ParameterSlider* width = new AC_ParameterSlider(mProcessor->parameters,
-                                                               AC_ParameterID[kAC_ModulationWidth],
-                                                               AC_ParameterLabel[kAC_ModulationWidth]);
-            width->setBounds(210, 185, 42, 42);
-            addAndMakeVisible(width);
-            mSliders.add(width);
+            
+            
+            
             
             //5 chorus phase offset
             AC_ParameterSlider* feedback = new AC_ParameterSlider(mProcessor->parameters,
