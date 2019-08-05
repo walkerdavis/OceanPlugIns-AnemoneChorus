@@ -23,10 +23,13 @@ The actual water color painting and lettering was done by my good friend, you ca
 This plug-in was built using C++, the JUCE Framework (5.4.3), and after completing Output's plug-in [development course](https://www.kadenze.com/programs/output-teaches-creating-audio-plugins-with-c-and-juce) on the Kadenze platform.  I highly recommend it if you are interested in building plug-ins.
 
 ## Demo
-You can view the youtube demo [here](https://www.youtube.com/watch?v=-dZqQYZgTmo).  My good friend Jesse Green of [BeethovenBoyProductions](https://www.youtube.com/beethovenboyproductions) lent me some really wavy guitar passages to bring the Anemone Chorus to life.
+Here is a quick [Youtube demo](https://www.youtube.com/watch?v=-dZqQYZgTmo).  My good friend Jesse Green of [BeethovenBoyProductions](https://www.youtube.com/beethovenboyproductions) lent me some really wavy guitar passages to bring the Anemone Chorus to life.
 
 ## Using the Plug-In
 If you would like to use this plug-in without building it yourself, you can simply drag the AnemoneChorus.vst3 to its corresponding directory on your computer.  
+
+## Optional Donation
+Feel free to use this plug-in for free, but if you feel so inclined, you can throw me some bones via [Paypal](https://paypal.me/2076la?locale.x=en_US).
 
 I really enjoyed putting this together.  Additional and improved functionality on the way!  Feel free to reach out with any feedback(no pun intended) and/or thoughts!
 
