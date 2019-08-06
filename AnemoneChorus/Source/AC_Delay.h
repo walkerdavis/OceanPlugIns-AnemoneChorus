@@ -14,7 +14,6 @@
 
 enum AC_DelayType
 {
-//    kAC_DelayType_Delay = 0,
     kAC_DelayType_Chorus = 0,
 };
 
@@ -31,8 +30,10 @@ public:
     
     void process(float *inAudio,
                  float inFeedback,
+                 float inFeedbackAmount,
                  float inWetDry,
                  float* inModulationBuffer,
+                 float* inEnvelopeBuffer,
                  float *outAudio,
                  int inNumSamplesToRender);
     

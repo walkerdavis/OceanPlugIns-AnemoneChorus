@@ -25,6 +25,7 @@ public:
     void process(float inThreshold,
                  float inAttackTime,
                  float inReleaseTime,
+                 float* inData,
                  int inNumSamples);
     
     float* getBuffer();

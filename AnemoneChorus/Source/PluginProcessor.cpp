@@ -21,7 +21,8 @@ AnemoneChorusAudioProcessor::AnemoneChorusAudioProcessor()
                        .withInput  ("Input",  AudioChannelSet::stereo(), true)
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
-                     #endif
+                      #endif
+//                       .withInput  ("Sidechain", AudioChannelSet::stereo(), true)
                        ),
                 parameters(*this,
                            nullptr,
@@ -105,6 +106,7 @@ void AnemoneChorusAudioProcessor::prepareToPlay (double sampleRate, int samplesP
     for (int i = 0; i < 2; ++i){
         mDelay[i]->setSampleRate(sampleRate);
         mLFO[i]->setSampleRate(sampleRate);
+        mEnvFol[i]->setSampleRate(sampleRate);
     }
 }
 
@@ -113,6 +115,7 @@ void AnemoneChorusAudioProcessor::releaseResources()
     for (int i = 0; i < 2; ++i){
         mDelay[i]->reset();
         mLFO[i]->reset();
+        mEnvFol[i]->reset();
     }
 }
 
@@ -140,24 +143,31 @@ bool AnemoneChorusAudioProcessor::isBusesLayoutSupported (const BusesLayout& lay
 }
 #endif
 
+
+
 void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
     ScopedNoDenormals noDenormals;
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
     
-    
-    
     for (auto i = totalNumInputChannels; i < totalNumOutputChannels; ++i)
         buffer.clear (i, 0, buffer.getNumSamples());
     
     // get LFO params
-    float modulationrate = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationRate]);
+    float modulationRate = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationRate]);
     float modulationPhaseOffset = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationPhaseOffset]);
     float modulationDepth = *parameters.getRawParameterValue(AC_ParameterID[kAC_ModulationDepth]);
     
     float modulationFeedback = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFeedback]);
+    float envFeedbackAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFeedbackAmount]);
     float wetDry = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterWetDry]);
+    
+    float envThreshold = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterThreshold]);
+    float envAttack = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterAttack]);
+    float envRelease = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterRelease]);
+    float envRateAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterRateAmount]);
+    float envDepthAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDepthAmount]);
     
     // get output buffer for each channel
     for (int channel = 0; channel < totalNumInputChannels; ++channel)
@@ -165,6 +175,12 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
         auto* channelData = buffer.getWritePointer (channel);
         
         float inputGain = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterInputGain]);
+        
+        mEnvFol[channel]->process(envThreshold,
+                                  envAttack,
+                                  envRelease,
+                                  channelData,
+                                  buffer.getNumSamples());
         
         mInputGain[channel]->process(channelData,
                             inputGain,
@@ -174,15 +190,20 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
             modulationPhaseOffset = 0;
         }
         
-        mLFO[channel]->process(modulationrate,
+        mLFO[channel]->process(modulationRate,
                                modulationDepth,
                                modulationPhaseOffset,
+                               envRateAmount,
+                               envDepthAmount,
+                               mEnvFol[channel]->getBuffer(),
                                buffer.getNumSamples());
         
         mDelay[channel]->process(channelData,
                                  modulationFeedback,
+                                 envFeedbackAmount,
                                  wetDry,
                                  mLFO[channel]->getBuffer(),
+                                 mEnvFol[channel]->getBuffer(),
                                  channelData,
                                  buffer.getNumSamples());
         
@@ -259,6 +280,7 @@ void AnemoneChorusAudioProcessor::initializeDSP()
         mOutputGain[i].reset(new AC_Gain());
         mDelay[i].reset(new AC_Delay());
         mLFO[i].reset(new AC_LFO());
+        mEnvFol[i].reset(new AC_EnvelopeFollower());
     }
 }
 

@@ -13,8 +13,8 @@
 AC_EnvelopeFollower::AC_EnvelopeFollower()
 :   mSampleRate(-1),
     mDirection(false),
-    mCurrentPeak(0.0),
-    mValue(0.01)
+    mCurrentPeak(0.0f),
+    mValue(0.01f)
 {
     
 };
@@ -42,37 +42,41 @@ void AC_EnvelopeFollower::setSampleRate(double inSampleRate)
 void AC_EnvelopeFollower::process(float inThreshold,
                                      float inAttackTime,
                                      float inReleaseTime,
+                                     float* inData,
                                      int inNumSamples)
 {
-    const float attack = jmap(inAttackTime, 0.0f, 1.0f, 0.001f, .02f);
-    const float release = jmap(inAttackTime, 0.0f, 1.0f, 0.005f, .4f);
+    const float ms = mSampleRate/1000;
+    const float attack = jmap(inAttackTime, 0.0f, 1.0f, 1.0f, 40.0f);
+    const float release = jmap(inReleaseTime, 0.0f, 1.0f, 5.0f, 500.0f);
     
     for (int i = 0; i < inNumSamples; i++){
         
-        if (not mDirection){
-            if (fabs(mBuffer[i]) < inThreshold){
-                mValue -= 1/(mSampleRate*release);
-                if (mValue < 0.){
-                    mValue = 0.;
-                }
-            } else {
-                mValue += 1/(mSampleRate*attack);
-                if (fabs(mBuffer[i]) > mCurrentPeak){
-                    mCurrentPeak = fabs(mBuffer[i]);
-                }
-                mDirection = true;
-            }
-        } else {
-            mValue += 1/(mSampleRate*attack);
+        if (mDirection){
+            mValue += 1/(attack*ms);
             
-            if (fabs(mBuffer[i]) > mCurrentPeak){
-                mCurrentPeak = fabs(mBuffer[i]);
+            if (fabs(inData[i]) > mCurrentPeak){
+                mCurrentPeak = fabs(inData[i]);
             }
             
             if (mValue > mCurrentPeak){
-                mValue = mCurrentPeak;
-                mCurrentPeak = 0;
                 mDirection = false;
+                mValue = mCurrentPeak;
+                mCurrentPeak = 0.;
+            }
+            
+        } else {
+            mValue -= 1/(release*ms);
+            
+            if (fabs(inData[i]) < inThreshold){
+                if (mValue < 0.){
+                    mValue = 0.;
+                }
+                
+            } else {
+                if (fabs(inData[i]) > mCurrentPeak){
+                mCurrentPeak = fabs(inData[i]);
+                }
+                mDirection = true;
             }
         }
         mBuffer[i] = mValue;

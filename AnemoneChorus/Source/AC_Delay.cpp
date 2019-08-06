@@ -42,16 +42,21 @@ void AC_Delay::reset()
 
 void AC_Delay::process(float *inAudio,
                       float inFeedback,
+                      float inFeedbackAmount,
                       float inWetDry,
                       float* inModulationBuffer,
+                      float* inEnvelopeBuffer,
                       float *outAudio,
                       int inNumSamplesToRender)
 {
-    mFeedbackSmoothed = mFeedbackSmoothed - kParameterSmoothingCoeff_Generic * (mFeedbackSmoothed - (inFeedback));
-    float feedbackMapped = 0;
-    feedbackMapped = jmap(mFeedbackSmoothed, 0.0f, 1.0f, 0.f, 1.1f);
+    
     
     for (int i = 0; i < inNumSamplesToRender; i++){
+        
+        float feedbackCurrent = inFeedback + (inEnvelopeBuffer[i] * inFeedbackAmount);
+        mFeedbackSmoothed = mFeedbackSmoothed - kParameterSmoothingCoeff_Fine * (mFeedbackSmoothed - feedbackCurrent);
+        float feedbackMapped = 0.;
+        feedbackMapped = jmap(mFeedbackSmoothed, 0.0f, 1.0f, 0.f, 1.1f);
         
         const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
         mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));
