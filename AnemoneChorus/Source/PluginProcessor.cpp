@@ -162,10 +162,13 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     float modulationFeedback = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFeedback]);
     float envFeedbackAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFeedbackAmount]);
     float wetDry = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterWetDry]);
+    float softClip = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterSoftClip]);
     
     float envThreshold = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterThreshold]);
     float envAttack = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterAttack]);
+    float envHold = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterHold]);
     float envRelease = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterRelease]);
+    float envFloor = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterFloor]);
     float envRateAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterRateAmount]);
     float envDepthAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDepthAmount]);
     
@@ -178,7 +181,9 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
         
         mEnvFol[channel]->process(envThreshold,
                                   envAttack,
+                                  envHold,
                                   envRelease,
+                                  envFloor,
                                   channelData,
                                   buffer.getNumSamples());
         
@@ -202,6 +207,7 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                                  modulationFeedback,
                                  envFeedbackAmount,
                                  wetDry,
+                                 softClip,
                                  mLFO[channel]->getBuffer(),
                                  mEnvFol[channel]->getBuffer(),
                                  channelData,

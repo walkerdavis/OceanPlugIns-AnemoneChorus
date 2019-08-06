@@ -21,10 +21,13 @@ enum AC_Parameters
     
     kAC_ParameterThreshold,
     kAC_ParameterAttack,
+    kAC_ParameterHold,
     kAC_ParameterRelease,
+    kAC_ParameterFloor,
     kAC_ParameterRateAmount,
     kAC_ParameterDepthAmount,
     
+    kAC_ParameterSoftClip,
     kAC_ParameterWetDry,
     kAC_ParameterOutputGain,
     
@@ -43,10 +46,13 @@ static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
     
     "EnvelopeThreshold",
     "EnvelopeAttack",
+    "EnvelopeHold",
     "EnvelopeRelease",
+    "EnvelopeFloor",
     "EnvelopeRateAmount",
     "EnvelopeDepthAmount",
     
+    "SoftClip",
     "WetDry",
     "OutputGain",
     
@@ -65,10 +71,13 @@ static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
     
     "Env Thrshld",
     "Env Atk",
+    "Env Hold",
     "Env Rel",
+    "Env Floor",
     "Env Rate Amnt",
     "Env Depth Amnt",
     
+    "Soft Clip",
     "Wet Dry",
     "Output Gain",
 };
@@ -76,19 +85,22 @@ static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
 {
     0.5f,
-    0.2f,
-    0.4f,
+    0.1f,
+    0.1f,
     
-    0.25f,
+    0.1f,
+    0.7f,
+    0.5f,
+    
+    0.7f,
     0.5f,
     0.5f,
+    0.7f,
+    0.1f,
+    0.9f,
+    0.9f,
     
-    0.2f,
     0.01f,
-    0.3f,
-    0.5f,
-    0.5f,
-    
     0.5f,
     0.5f,
 };

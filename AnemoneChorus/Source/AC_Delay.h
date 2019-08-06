@@ -32,6 +32,7 @@ public:
                  float inFeedback,
                  float inFeedbackAmount,
                  float inWetDry,
+                 float inSoftClip,
                  float* inModulationBuffer,
                  float* inEnvelopeBuffer,
                  float *outAudio,
@@ -48,6 +49,7 @@ private:
     float mTimeSmoothed;
     float mWetSmoothed;
     float mFeedbackSmoothed;
+    float mSoftClipSmoothed;
     
     int mDelayIndex;
 };

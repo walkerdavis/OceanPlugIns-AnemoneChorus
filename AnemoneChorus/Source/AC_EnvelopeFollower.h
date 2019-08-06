@@ -12,6 +12,14 @@
 
 #include "AC_AudioHelpers.h"
 
+enum kAC_EnvState
+{
+    kAC_EnvState_Attack,
+    kAC_EnvState_Hold,
+    kAC_EnvState_Release,
+    kAC_EnvState_TotalNumStyles
+};
+
 class AC_EnvelopeFollower
 {
 public:
@@ -24,7 +32,9 @@ public:
     
     void process(float inThreshold,
                  float inAttackTime,
+                 float inHoldTime,
                  float inReleaseTime,
+                 float inFloor,
                  float* inData,
                  int inNumSamples);
     
@@ -36,8 +46,12 @@ private:
     double mSampleRate;
     float mBuffer[maxBufferDelaySize];
     
-    bool mDirection;
+//    bool mDirection;
+//    int mHoldTime;
+    int mHoldCounter;
     float mCurrentPeak;
     float mValue;
+    
+    kAC_EnvState mEnvState;
     
 };
