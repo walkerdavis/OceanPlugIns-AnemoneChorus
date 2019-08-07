@@ -35,9 +35,14 @@ inline float AC_linear_interp(float v0, float v1, float t)
     return (1 - t) * v0 + t * v1;
 };
 
-inline double tanh_clip(double x)
+inline double tanh_clip(double x, float factor)
 {
-    return x * (27 + x * x) / (27 + 9 * x * x);
+    if (factor < 1.){
+        return x;
+    } else {
+        return x * ((factor * factor * factor) + x * x) / ((factor * factor * factor) + (factor * factor) * x * x);
+    }
+    
 }
 
 inline float ac_denormalize(float inValue)

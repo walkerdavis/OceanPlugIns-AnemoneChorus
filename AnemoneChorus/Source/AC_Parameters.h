@@ -14,10 +14,20 @@ enum AC_Parameters
     kAC_ParameterInputGain = 0,
     kAC_ModulationRate,
     kAC_ModulationDepth,
-    kAC_ModulationWidth,
-    
     kAC_ParameterFeedback,
+    
     kAC_ModulationPhaseOffset,
+    kAC_ParameterRateAmount,
+    kAC_ParameterDepthAmount,
+    kAC_ParameterFeedbackAmount,
+    
+    kAC_ParameterThreshold,
+    kAC_ParameterAttack,
+    kAC_ParameterHold,
+    kAC_ParameterRelease,
+    
+    kAC_ParameterFloor,
+    kAC_ParameterSoftClip,
     kAC_ParameterWetDry,
     kAC_ParameterOutputGain,
     
@@ -29,23 +39,45 @@ static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
     "InputGain",
     "ModulationRate",
     "ModulationDepth",
-    "ModulationWidth",
-    
     "Feedback",
+    
     "ModulationPhaseOffset",
+    "EnvelopeRateAmount",
+    "EnvelopeDepthAmount",
+    "EnvelopeFeedbackAmount",
+    
+    "EnvelopeThreshold",
+    "EnvelopeAttack",
+    "EnvelopeHold",
+    "EnvelopeRelease",
+    
+    "EnvelopeFloor",
+    "SoftClip",
     "WetDry",
     "OutputGain",
+    
+    
 };
 
 static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 {
     "Input Gain",
-    "Mod Rate",
-    "Mod Depth",
-    "Mod Width",
+    "Rate",
+    "Depth",
+    "Fdbk",
     
-    "Mod Fdbk",
-    "Mod Phase Offset",
+    "Phase Offset",
+    "Env Rate Amnt",
+    "Env Depth Amnt",
+    "Env Fdbk Amnt",
+    
+    "Env Thrshld",
+    "Env Atk",
+    "Env Hold",
+    "Env Rel",
+    
+    "Env Floor",
+    "Soft Clip",
     "Wet Dry",
     "Output Gain",
 };
@@ -53,12 +85,22 @@ static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
 {
     0.5f,
-    0.2f,
-    0.4f,
-    0.6f,
+    0.5f,
+    0.5f,
+    0.5f,
     
-    0.25f,
-    0.5,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.5f,
+    
+    0.7f,
+    0.2f,
+    0.3f,
+    0.7f,
+    
+    0.1f,
+    0.f,
     0.5f,
     0.5f,
 };

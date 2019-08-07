@@ -12,6 +12,7 @@
 #include "JuceHeader.h"
 
 AC_LFO::AC_LFO()
+: mRateSmoothed(0.5)
 {
     
 };
@@ -36,12 +37,26 @@ void AC_LFO::setSampleRate(double inSampleRate)
 void AC_LFO::process(float inRate,
                      float inDepth,
                      float inPhaseOffset,
+                     float inRateAmount,
+                     float inDepthAmount,
+                     float* inEnvFolBuffer,
                      int inNumSamples)
 {
-    const float rate = jmap(inRate, 0.0f, 1.0f, 0.01f, 5.0f);
+    
+    const float rateAmountMapped = jmap(inRateAmount, 0.0f, 1.0f, -2.0f, 2.0f);
+    const float depthAmountMapped = jmap(inDepthAmount, 0.0f, 1.0f, -2.0f, 2.0f);
+    
     
     for (int i = 0; i < inNumSamples; i++){
-        mPhase = mPhase + (rate / mSampleRate);
+        float rateCurrent = inRate + (inEnvFolBuffer[i] * rateAmountMapped);
+        mRateSmoothed = mRateSmoothed - kParameterSmoothingCoeff_Fine * (mRateSmoothed - (rateCurrent));
+        
+        if (rateCurrent < 0.){
+            rateCurrent = 0.;
+        }
+        
+        float rateMapped = jmap(mRateSmoothed, 0.0f, 1.0f, 0.01f, 8.0f);
+        mPhase = mPhase + (rateMapped / mSampleRate);
         
         if (mPhase> 1){
             mPhase -= 1;
@@ -53,8 +68,9 @@ void AC_LFO::process(float inRate,
             phaseWithOffset -= 1;
         }
         
-        const float lfoPosition = sinf(phaseWithOffset * k2PI) * inDepth;       //kadenze sin function
-        //        const float lfoPosition = inDepth * sinf((k2PI * rate) + mPhase);
+        float depthCurrent = inDepth + (inEnvFolBuffer[i] * depthAmountMapped);
+        mDepthSmoothed = mDepthSmoothed - kParameterSmoothingCoeff_Fine * (mDepthSmoothed - (depthCurrent));
+        const float lfoPosition = sinf(phaseWithOffset * k2PI) * mDepthSmoothed;
         mBuffer[i] = lfoPosition;
         
     }

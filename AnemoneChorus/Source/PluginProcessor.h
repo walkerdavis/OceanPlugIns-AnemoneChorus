@@ -14,6 +14,7 @@
 #include "AC_Gain.h"
 #include "AC_Delay.h"
 #include "AC_LFO.h"
+#include "AC_EnvelopeFollower.h"
 #include "AC_PresetManager.h"
 
 //==============================================================================
@@ -30,9 +31,9 @@ public:
     void prepareToPlay (double sampleRate, int samplesPerBlock) override;
     void releaseResources() override;
 
-   #ifndef JucePlugin_PreferredChannelConfigurations
+//   #ifndef JucePlugin_PreferredChannelConfigurations
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
-   #endif
+//   #endif
 
     void processBlock (AudioBuffer<float>&, MidiBuffer&) override;
 
@@ -74,6 +75,7 @@ private:
     std::unique_ptr<AC_Gain> mOutputGain [2];
     std::unique_ptr<AC_Delay> mDelay [2];
     std::unique_ptr<AC_LFO> mLFO [2];
+    std::unique_ptr<AC_EnvelopeFollower> mEnvFol [2];
     
     std::unique_ptr<AC_PresetManager> mPresetManager;
     

@@ -14,7 +14,6 @@
 
 enum AC_DelayType
 {
-//    kAC_DelayType_Delay = 0,
     kAC_DelayType_Chorus = 0,
 };
 
@@ -30,10 +29,12 @@ public:
     void reset();
     
     void process(float *inAudio,
-                 float inWidth,
                  float inFeedback,
+                 float inFeedbackAmount,
                  float inWetDry,
+                 float inSoftClip,
                  float* inModulationBuffer,
+                 float* inEnvelopeBuffer,
                  float *outAudio,
                  int inNumSamplesToRender);
     
@@ -46,7 +47,9 @@ private:
     double mFeedbackSample;
     
     float mTimeSmoothed;
-    float mWidthSmoothed;
+    float mWetSmoothed;
+    float mFeedbackSmoothed;
+    float mSoftClipSmoothed;
     
     int mDelayIndex;
 };

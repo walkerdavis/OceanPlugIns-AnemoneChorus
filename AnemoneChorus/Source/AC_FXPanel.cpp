@@ -66,83 +66,127 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
     
     mSliders.clear();
     
-    const float slider_size = 56.f;
-    const float slider_offset = 1.5f;
-    int x = 50;
-    int y = (getHeight() * .5) - (slider_size * .5);
-    //width = 750
-    //height = 300
+//    const float slider_size = 56.f;
+//    const float slider_offset = 1.5f;
+//    int x = 50;
+
     
     switch (mStyle)
     {
             
         case (kAC_FXPanelStyle_Chorus):{
             
-            //1 input gain
-            AC_ParameterSlider* gain_in = new AC_ParameterSlider(mProcessor->parameters,
-                                                               AC_ParameterID[kAC_ParameterInputGain],
-                                                               AC_ParameterLabel[kAC_ParameterInputGain]);
-            gain_in->setBounds(140, 160, 62, 62);
-            addAndMakeVisible(gain_in);
-            mSliders.add(gain_in);
+            // CHORUS ROTARY SLIDERS
             
-            //2 chorus rate
+            // chorus rate
             AC_ParameterSlider* rate = new AC_ParameterSlider(mProcessor->parameters,
                                                                  AC_ParameterID[kAC_ModulationRate],
                                                                  AC_ParameterLabel[kAC_ModulationRate]);
-//            rate.setLookAndFeel(&AC_OtherLookAndFeel);
-            
-            rate->setBounds(125, 90, 47, 47);
+            rate->setBounds(130, 70, 59, 59);
             addAndMakeVisible(rate);
             mSliders.add(rate);
             
-            //3 chorus depth
+            // chorus depth
             AC_ParameterSlider* depth = new AC_ParameterSlider(mProcessor->parameters,
                                                                  AC_ParameterID[kAC_ModulationDepth],
                                                                  AC_ParameterLabel[kAC_ModulationDepth]);
-            depth->setBounds(200, 60, 48, 48);
+            depth->setBounds(240, 70, 46, 46);
             addAndMakeVisible(depth);
             mSliders.add(depth);
             
-            //4 chorus width
-            AC_ParameterSlider* width = new AC_ParameterSlider(mProcessor->parameters,
-                                                               AC_ParameterID[kAC_ModulationWidth],
-                                                               AC_ParameterLabel[kAC_ModulationWidth]);
-            width->setBounds(210, 185, 42, 42);
-            addAndMakeVisible(width);
-            mSliders.add(width);
-            
-            //5 chorus phase offset
+            // chorus feedback
             AC_ParameterSlider* feedback = new AC_ParameterSlider(mProcessor->parameters,
                                                                       AC_ParameterID[kAC_ParameterFeedback],
                                                                       AC_ParameterLabel[kAC_ParameterFeedback]);
-            feedback->setBounds(580, 45, 47, 47);
+            feedback->setBounds(130, 175, 49, 49);
             addAndMakeVisible(feedback);
             mSliders.add(feedback);
             
-            //6 chorus phase offset
+            // chorus phase offset
             AC_ParameterSlider* phase_offset = new AC_ParameterSlider(mProcessor->parameters,
                                                                AC_ParameterID[kAC_ModulationPhaseOffset],
                                                                AC_ParameterLabel[kAC_ModulationPhaseOffset]);
-            phase_offset->setBounds(585, 155, 47, 47);
+            phase_offset->setBounds(200, 120, 53, 53);
             addAndMakeVisible(phase_offset);
             mSliders.add(phase_offset);
             
-            //7 chorus wetdry
+            // chorus wetdry
             AC_ParameterSlider* wetdry = new AC_ParameterSlider(mProcessor->parameters,
                                                                   AC_ParameterID[kAC_ParameterWetDry],
                                                                   AC_ParameterLabel[kAC_ParameterWetDry]);
-            wetdry->setBounds(680, 90, slider_size, slider_size);
+            wetdry->setBounds(232, 180, 59, 59);
             addAndMakeVisible(wetdry);
             mSliders.add(wetdry);
             
-            //8 output gain
-            AC_ParameterSlider* gain_out = new AC_ParameterSlider(mProcessor->parameters,
-                                                                 AC_ParameterID[kAC_ParameterOutputGain],
-                                                                 AC_ParameterLabel[kAC_ParameterOutputGain]);
-            gain_out->setBounds(670, 160, 62, 62);
-            addAndMakeVisible(gain_out);
-            mSliders.add(gain_out);
+            
+            // ENVELOPE FOLLOWER ROTARY SLIDERS
+            
+            // threshold
+            AC_ParameterSlider* threshold = new AC_ParameterSlider(mProcessor->parameters,
+                                                               AC_ParameterID[kAC_ParameterThreshold],
+                                                               AC_ParameterLabel[kAC_ParameterThreshold]);
+            threshold->setBounds(620, 55, 36, 36);
+            addAndMakeVisible(threshold);
+            mSliders.add(threshold);
+            
+            // attack
+            AC_ParameterSlider* attack = new AC_ParameterSlider(mProcessor->parameters,
+                                                                   AC_ParameterID[kAC_ParameterAttack],
+                                                                   AC_ParameterLabel[kAC_ParameterAttack]);
+            attack->setBounds(685, 105, 39, 39);
+            addAndMakeVisible(attack);
+            mSliders.add(attack);
+            
+            // hold
+            AC_ParameterSlider* hold = new AC_ParameterSlider(mProcessor->parameters,
+                                                                   AC_ParameterID[kAC_ParameterHold],
+                                                                   AC_ParameterLabel[kAC_ParameterHold]);
+            hold->setBounds(605, 140, 34, 34);
+            addAndMakeVisible(hold);
+            mSliders.add(hold);
+            
+            // release
+            AC_ParameterSlider* release = new AC_ParameterSlider(mProcessor->parameters,
+                                                                   AC_ParameterID[kAC_ParameterRelease],
+                                                                   AC_ParameterLabel[kAC_ParameterRelease]);
+            release->setBounds(680, 170, 29, 29);
+            addAndMakeVisible(release);
+            mSliders.add(release);
+            
+            // floor
+            AC_ParameterSlider* floor = new AC_ParameterSlider(mProcessor->parameters,
+                                                                   AC_ParameterID[kAC_ParameterFloor],
+                                                                   AC_ParameterLabel[kAC_ParameterFloor]);
+            floor->setBounds(590, 200, 37, 37);
+            addAndMakeVisible(floor);
+            mSliders.add(floor);
+            
+            
+            // CHORUS AMOUNT ROTARY SLIDERS
+            
+            // rate amount
+            AC_ParameterSlider* rate_amnt = new AC_ParameterSlider(mProcessor->parameters,
+                                                              AC_ParameterID[kAC_ParameterRateAmount],
+                                                              AC_ParameterLabel[kAC_ParameterRateAmount]);
+            rate_amnt->setBounds(160, 50, 20, 20);
+            addAndMakeVisible(rate_amnt);
+            mSliders.add(rate_amnt);
+            
+            // depth amount
+            AC_ParameterSlider* depth_amnt = new AC_ParameterSlider(mProcessor->parameters,
+                                                                   AC_ParameterID[kAC_ParameterDepthAmount],
+                                                                   AC_ParameterLabel[kAC_ParameterDepthAmount]);
+            depth_amnt->setBounds(235, 55, 17, 17);
+            addAndMakeVisible(depth_amnt);
+            mSliders.add(depth_amnt);
+            
+            // feedback amount
+            AC_ParameterSlider* feedback_amnt = new AC_ParameterSlider(mProcessor->parameters,
+                                                                   AC_ParameterID[kAC_ParameterFeedbackAmount],
+                                                                   AC_ParameterLabel[kAC_ParameterFeedbackAmount]);
+            feedback_amnt->setBounds(175, 170, 19, 19);
+            addAndMakeVisible(feedback_amnt);
+            mSliders.add(feedback_amnt);
             
         } break;
             

@@ -23,7 +23,13 @@ public:
     
     void setSampleRate(double inSampleRate);
     
-    void process(float inRate, float inDepth, float inPhaseOffset, int inNumSamples);
+    void process(float inRate,
+                 float inDepth,
+                 float inPhaseOffset,
+                 float inRateAmount,
+                 float inDepthAmount,
+                 float* inEnvFolBuffer,
+                 int inNumSamples);
     
     float* getBuffer();
     
@@ -31,4 +37,7 @@ private:
     double mSampleRate;
     float mPhase;
     float mBuffer[maxBufferDelaySize];
+    
+    float mRateSmoothed;
+    float mDepthSmoothed;
 };

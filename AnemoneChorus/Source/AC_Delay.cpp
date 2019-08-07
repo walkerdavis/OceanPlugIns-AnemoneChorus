@@ -14,9 +14,11 @@
 
 AC_Delay::AC_Delay()
 :  mSampleRate(-1),
-    mFeedbackSample(0.0),
-    mTimeSmoothed(0),
-    mWidthSmoothed(0.01),
+    mFeedbackSample(0.),
+    mTimeSmoothed(0.),
+    mWetSmoothed(0.),
+    mFeedbackSmoothed(0.),
+    mSoftClipSmoothed(0.),
     mDelayIndex(0)
 
 {
@@ -35,40 +37,49 @@ void AC_Delay::setSampleRate(double inSampleRate)
 
 void AC_Delay::reset()
 {
-    mTimeSmoothed = 0.0f;
+    mFeedbackSample = 0.f;
+    mTimeSmoothed = 0.f;
+    mWetSmoothed = 0.f;
+    mFeedbackSmoothed = 0.f;
+    mSoftClipSmoothed = 0.001f;
     zeromem(mBuffer, (sizeof(double) * maxBufferDelaySize));
 };
 
 void AC_Delay::process(float *inAudio,
-                      float inWidth,
                       float inFeedback,
+                      float inFeedbackAmount,
                       float inWetDry,
+                      float inSoftClip,
                       float* inModulationBuffer,
+                      float* inEnvelopeBuffer,
                       float *outAudio,
                       int inNumSamplesToRender)
 {
-    const float wet = inWetDry;
-    const float dry = 1.0 - wet;
-    
-    float feedbackMapped = 0;
-    feedbackMapped = jmap(inFeedback, 0.0f, 1.0f, 0.f, 1.2f);
-    
-    float widthMapped = 0;
-    widthMapped = jmap(inWidth, 0.0f, 1.0f, 0.003f, 0.02f);
+    mSoftClipSmoothed = mSoftClipSmoothed - kParameterSmoothingCoeff_Generic * (mSoftClipSmoothed - inSoftClip);
+    const float softClipMapped = jmap(mSoftClipSmoothed, 0.f, 1.f, 0.0f, 10.f);
     
     for (int i = 0; i < inNumSamplesToRender; i++){
         
-        const double delayTimeModulation = (widthMapped + (0.002 * inModulationBuffer[i]));
+        float feedbackCurrent = inFeedback + (inEnvelopeBuffer[i] * inFeedbackAmount);
+        mFeedbackSmoothed = mFeedbackSmoothed - kParameterSmoothingCoeff_Fine * (mFeedbackSmoothed - feedbackCurrent);
+        
+        if (mFeedbackSmoothed > 1.0) { mFeedbackSmoothed = 1.0; };
+        
+        float feedbackMapped = jmap(mFeedbackSmoothed, 0.0f, 1.0f, 0.f, .99f);
+        
+        const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
         mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));
         
         const double delayTimeInSamples = ((mTimeSmoothed) * mSampleRate);
         const double sample = getInterpolatedSample(delayTimeInSamples);
         
-        mBuffer[mDelayIndex] = tanh_clip(inAudio[i] + (mFeedbackSample * feedbackMapped));
+        mBuffer[mDelayIndex] = tanh_clip((inAudio[i] + (mFeedbackSample * feedbackMapped)),
+                                         softClipMapped);
         
         mFeedbackSample = sample;
         
-        outAudio[i] = (inAudio[i] * dry) + (sample * wet);
+        mWetSmoothed = mWetSmoothed - kParameterSmoothingCoeff_Fine * (mWetSmoothed - (inWetDry));
+        outAudio[i] = (inAudio[i] * (1.0 - mWetSmoothed)) + (sample * mWetSmoothed);
         
         mDelayIndex = mDelayIndex + 1;
         

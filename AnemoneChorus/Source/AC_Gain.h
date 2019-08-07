@@ -26,5 +26,6 @@ public:
 private:
     
     float mOutputSmoothed;
+    float mGainSmoothed;
     
 };
