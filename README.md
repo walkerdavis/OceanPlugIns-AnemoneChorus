@@ -30,7 +30,7 @@ Here is a quick [Youtube demo and beat for Gucci Mane ](https://www.youtube.com/
 In this plug-in, I used bubbles instead of traditional rotary knobs, simply drag each knob to change their corresponding value.  Drag all the way left/down to reach the minimum of each bubble's range, drag all the way up.right to reach it's maximum.
 
 ### Small Bubble Knobs
-The small bubbles above the Rate, Depth, and Feedback correlate to each of those parameters Envelope Follower Modulation Amounts.  ie. To increase/modulate the Rate when the incoming audio is loud, rotate the small bubble to the right; to decrease the rate, rotate left.
+The small bubbles above the Rate, Depth, and Feedback correlate to each of those parameters Envelope Follower Modulation Amounts.  ie. To increase the Rate's Modulation Amount when the incoming audio is loud, rotate the small bubble to the right; to decrease the Rate's Modulation Amount, rotate left.
 
 
 ## Download/Install
