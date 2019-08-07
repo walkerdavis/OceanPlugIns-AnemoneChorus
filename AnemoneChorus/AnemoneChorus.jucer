@@ -73,8 +73,8 @@
     </GROUP>
     <GROUP id="{3BBD6528-662D-B7EF-9733-F8900187DD7E}" name="Assets">
       <FILE id="LNFoYD" name="ac_knob2.png" compile="0" resource="1" file="Assets/ac_knob2.png"/>
+      <FILE id="BPaF6K" name="bk_v6.png" compile="0" resource="1" file="Assets/bk_v6.png"/>
       <FILE id="STGjQd" name="ac_knob.png" compile="0" resource="1" file="Assets/ac_knob.png"/>
-      <FILE id="gZIeQQ" name="bk_v3.png" compile="0" resource="1" file="Assets/bk_v3.png"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

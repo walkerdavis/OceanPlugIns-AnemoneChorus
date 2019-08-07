@@ -1,9 +1,9 @@
 # OceanPlugIns-AnemoneChorus
-## A Chorus VST plug-in built using the JUCE Framework
+## A Evelope-Following Chorus VST3 plug-in built using the JUCE Framework, Version 1.2
 
-### ![alt text](GUI_export_073119.png)  
+### ![alt text](GUI_export_080719.png)  
 
-This is the first of several plug-ins in a my Ocean Plug-ins Suite.  The actual Chorus effect/DSP is pretty straight-forward, not reinventing the wheel here.  
+This is the first of several plug-ins in a my Ocean Plug-ins Suite.  The actual Chorus effect/DSP is pretty straight-forward, except that there is an internal envelope follower that modulates the Rate, Depth, and Feeback using the incoming audio's amplitude.
 
 
 ## Design
@@ -23,10 +23,31 @@ The actual water color painting and lettering was done by my good friend, you ca
 This plug-in was built using C++, the JUCE Framework (5.4.3), and after completing Output's plug-in [development course](https://www.kadenze.com/programs/output-teaches-creating-audio-plugins-with-c-and-juce) on the Kadenze platform.  I highly recommend it if you are interested in building plug-ins.
 
 ## Demo
-Here is a quick [Youtube demo](https://www.youtube.com/watch?v=-dZqQYZgTmo).  My good friend Jesse Green of [BeethovenBoyProductions](https://www.youtube.com/beethovenboyproductions) lent me some really wavy guitar passages to bring the Anemone Chorus to life.
+Here is a quick [Youtube demo and beat for Gucci Mane ](https://www.youtube.com/watch?v=LJsQY65ch7w).  The previous version's demo, using the guitar work my good friend Jesse Green of [BeethovenBoyProductions](https://www.youtube.com/beethovenboyproductions) is [here](https://www.youtube.com/watch?v=-dZqQYZgTmo).
 
-## Using the Plug-In
-If you would like to use this plug-in without building it yourself, you can simply drag the AnemoneChorus.vst3 to its corresponding directory on your computer.  
+## How to Use
+### Big Bubble Knobs
+In this plug-in, I used bubbles instead of traditional rotary knobs, simply drag each knob to change their corresponding value.  Drag all the way left/down to reach the minimum of each bubble's range, drag all the way up.right to reach it's maximum.
+
+### Small Bubble Knobs
+The small bubbles above the Rate, Depth, and Feedback correlate to each of those parameters Envelope Follower Modulation Amounts.  ie. To increase/modulate the Rate when the incoming audio is loud, rotate the small bubble to the right; to decrease the rate, rotate left.
+
+
+## Download/Install
+### Plug-In
+If you would like to use this plug-in without building it yourself, you can simply drag the AnemoneChorus.vst3 to its corresponding directory on your computer.  On Mac, that is: 
+
+```
+Macintosh HD > Library > Audio > Plug-Ins > VST3 >
+```
+
+### Presets in the video
+If you like the presets from the demo, I have included them in this repo too.  Once you have opened the Chorus in your DAW, it will make a folder in you Documents directory.  Drag each of the presets into this folder, delete the instance of the plug-in, create a new instance, boom.
+
+```
+Macintosh HD > Users > $YOUR_USERNAME$ > Documents > AnemoneChorus >
+```
+
 
 ## Optional Donation
 Feel free to use this plug-in for free, but if you feel so inclined, you can throw me some bones via [Paypal](https://paypal.me/2076la?locale.x=en_US).

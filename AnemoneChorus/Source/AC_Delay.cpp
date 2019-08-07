@@ -18,7 +18,7 @@ AC_Delay::AC_Delay()
     mTimeSmoothed(0.),
     mWetSmoothed(0.),
     mFeedbackSmoothed(0.),
-    mSoftClipSmoothed(0.001),
+    mSoftClipSmoothed(0.),
     mDelayIndex(0)
 
 {
@@ -56,14 +56,16 @@ void AC_Delay::process(float *inAudio,
                       int inNumSamplesToRender)
 {
     mSoftClipSmoothed = mSoftClipSmoothed - kParameterSmoothingCoeff_Generic * (mSoftClipSmoothed - inSoftClip);
-    const float softClipMapped = jmap(mSoftClipSmoothed, 0.f, 1.f, 0.001f, 10.f);
+    const float softClipMapped = jmap(mSoftClipSmoothed, 0.f, 1.f, 0.0f, 10.f);
     
     for (int i = 0; i < inNumSamplesToRender; i++){
         
         float feedbackCurrent = inFeedback + (inEnvelopeBuffer[i] * inFeedbackAmount);
         mFeedbackSmoothed = mFeedbackSmoothed - kParameterSmoothingCoeff_Fine * (mFeedbackSmoothed - feedbackCurrent);
-        float feedbackMapped = 0.;
-        feedbackMapped = jmap(mFeedbackSmoothed, 0.0f, 1.0f, 0.f, 1.1f);
+        
+        if (mFeedbackSmoothed > 1.0) { mFeedbackSmoothed = 1.0; };
+        
+        float feedbackMapped = jmap(mFeedbackSmoothed, 0.0f, 1.0f, 0.f, .99f);
         
         const double delayTimeModulation = (0.003 + (0.002 * inModulationBuffer[i]));
         mTimeSmoothed = mTimeSmoothed - kParameterSmoothingCoeff_Fine * (mTimeSmoothed - (delayTimeModulation));

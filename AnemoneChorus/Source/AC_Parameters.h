@@ -14,19 +14,19 @@ enum AC_Parameters
     kAC_ParameterInputGain = 0,
     kAC_ModulationRate,
     kAC_ModulationDepth,
-    
     kAC_ParameterFeedback,
-    kAC_ParameterFeedbackAmount,
+    
     kAC_ModulationPhaseOffset,
+    kAC_ParameterRateAmount,
+    kAC_ParameterDepthAmount,
+    kAC_ParameterFeedbackAmount,
     
     kAC_ParameterThreshold,
     kAC_ParameterAttack,
     kAC_ParameterHold,
     kAC_ParameterRelease,
-    kAC_ParameterFloor,
-    kAC_ParameterRateAmount,
-    kAC_ParameterDepthAmount,
     
+    kAC_ParameterFloor,
     kAC_ParameterSoftClip,
     kAC_ParameterWetDry,
     kAC_ParameterOutputGain,
@@ -39,19 +39,19 @@ static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
     "InputGain",
     "ModulationRate",
     "ModulationDepth",
-    
     "Feedback",
-    "EnvelopeFeedbackAmount",
+    
     "ModulationPhaseOffset",
+    "EnvelopeRateAmount",
+    "EnvelopeDepthAmount",
+    "EnvelopeFeedbackAmount",
     
     "EnvelopeThreshold",
     "EnvelopeAttack",
     "EnvelopeHold",
     "EnvelopeRelease",
-    "EnvelopeFloor",
-    "EnvelopeRateAmount",
-    "EnvelopeDepthAmount",
     
+    "EnvelopeFloor",
     "SoftClip",
     "WetDry",
     "OutputGain",
@@ -62,21 +62,21 @@ static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
 static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 {
     "Input Gain",
-    "Mod Rate",
-    "Mod Depth",
+    "Rate",
+    "Depth",
+    "Fdbk",
     
-    "Mod Fdbk",
+    "Phase Offset",
+    "Env Rate Amnt",
+    "Env Depth Amnt",
     "Env Fdbk Amnt",
-    "Mod Phase Offset",
     
     "Env Thrshld",
     "Env Atk",
     "Env Hold",
     "Env Rel",
-    "Env Floor",
-    "Env Rate Amnt",
-    "Env Depth Amnt",
     
+    "Env Floor",
     "Soft Clip",
     "Wet Dry",
     "Output Gain",
@@ -85,22 +85,22 @@ static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
 {
     0.5f,
-    0.1f,
-    0.1f,
-    
-    0.1f,
-    0.7f,
-    0.5f,
-    
-    0.7f,
     0.5f,
     0.5f,
-    0.7f,
-    0.1f,
-    0.9f,
-    0.9f,
+    0.5f,
     
-    0.01f,
+    0.5f,
+    0.5f,
+    0.5f,
+    0.5f,
+    
+    0.7f,
+    0.2f,
+    0.3f,
+    0.7f,
+    
+    0.1f,
+    0.f,
     0.5f,
     0.5f,
 };
