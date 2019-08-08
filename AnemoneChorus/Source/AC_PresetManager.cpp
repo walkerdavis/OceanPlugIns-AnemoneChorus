@@ -21,10 +21,28 @@ AC_PresetManager::AC_PresetManager(AudioProcessor* inProcessor)
     mCurrentPresetName(" --- "),
     mProcessor(inProcessor)
 {
-    const String pluginName = (String) mProcessor->getName();
+
+    #if JUCE_WINDOWS
+        // directory for ocean plugins
+        const String companyNameDirectory = (File::getSpecialLocation(File::userDocumentsDirectory)).getFullPathName() + directorySeperator + "WalkerOceanPlugIns";
     
-    mPresetDirectory =
-    (File::getSpecialLocation(File::userDocumentsDirectory)).getFullPathName() + directorySeperator + pluginName;
+        if(~File(companyNameDirectory).exists()){
+            File(companyNameDirectory).createDirectory();
+        }
+    
+        // directory for anemone chorus presets
+        mPresetDirectory = companyNameDirectory + directorySeperator + ((String) mProcessor->getName());
+    #else
+        // directory for ocean plugins
+        const String companyNameDirectory = "~/Library/Application Support" + directorySeperator + "WalkerOceanPlugIns";
+    
+        if(~File(companyNameDirectory).exists()){
+            File(companyNameDirectory).createDirectory();
+        }
+    #endif
+    
+    // directory for anemone chorus presets
+    mPresetDirectory = companyNameDirectory + directorySeperator + ((String) mProcessor->getName());
     
     if(~File(mPresetDirectory).exists()){
         File(mPresetDirectory).createDirectory();

@@ -35,17 +35,10 @@ The small bubbles above the Rate, Depth, and Feedback correlate to each of those
 
 ## Download/Install
 ### Plug-In - Mac
-If you would like to use this plug-in without building it yourself, you can download the installer from [here](https://drive.google.com/file/d/16YKp45LQUXJYdIBVd3JZ0XOWkvpzbw4U/view?usp=sharing).
+If you would like to use this plug-in without building it yourself, you can download the installer from [here](https://drive.google.com/file/d/1Hr0fGx76i_AV3_Gip6V4qVAmj8AZ7G4o/view?usp=sharing).  You will need to run the installer for both the plug-in and presets.
 
 ### Plug-In - Windows
-Currently, there is no installer package, so you will need to manually place the .vst3 in your plug-ins folder.
-
-### Presets in the video
-If you like the presets from the demo, I have included them in this repo too.  Once you have opened the Chorus in your DAW, it will make a folder in you Documents directory.  Drag each of the presets into this folder, delete the instance of the plug-in, create a new instance, boom. (Currently, the installer does no include the presets, getting there, sorry!)
-
-```
-Macintosh HD > Users > $YOUR_USERNAME$ > Documents > AnemoneChorus >
-```
+Currently, there is no installer package, so you will need to manually place the .vst3 in your plug-ins folder.  You will also need to manually drag or copy the presets from this repo into a folder that will be created in your Documents directory.  Will improve this soon, sorry!
 
 
 ## Optional Donation
