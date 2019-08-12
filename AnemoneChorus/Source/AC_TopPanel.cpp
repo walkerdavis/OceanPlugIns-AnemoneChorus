@@ -21,33 +21,39 @@ AC_TopPanel::AC_TopPanel(AnemoneChorusAudioProcessor* inProcessor)
     int button_w = 55;
     int button_h = 25;
     
-    mNewPreset = new TextButton();
+//    mNewPreset = new TextButton();
+    mNewPreset.reset(new TextButton());
     mNewPreset->setButtonText("NEW");
     mNewPreset->setBounds(button_x, button_y, button_w, button_h);
     mNewPreset->addListener(this);
-    addAndMakeVisible(mNewPreset);
+    addAndMakeVisible(mNewPreset.get());
     
     button_x = button_x + button_w;
-    mSavePreset = new TextButton();
+    
+//    mSavePreset = new TextButton();
+    mSavePreset.reset(new TextButton());
     mSavePreset->setButtonText("SAVE");
     mSavePreset->setBounds(button_x, button_y, button_w, button_h);
     mSavePreset->addListener(this);
-    addAndMakeVisible(mSavePreset);
+    addAndMakeVisible(mSavePreset.get());
     
     button_x = button_x + button_w;
-    mSaveAsPreset = new TextButton();
+    
+//    mSaveAsPreset = new TextButton();
+    mSaveAsPreset.reset(new TextButton());
     mSaveAsPreset->setButtonText("SAVE AS");
     mSaveAsPreset->setBounds(button_x, button_y, button_w, button_h);
     mSaveAsPreset->addListener(this);
-    addAndMakeVisible(mSaveAsPreset);
+    addAndMakeVisible(mSaveAsPreset.get());
     
     const int comboBox_w = 200;
     const int comboBox_x = (TOP_PANEL_WIDTH*0.5) - (comboBox_w*0.5);
     
-    mPresetDisplay = new ComboBox();
+//    mPresetDisplay = new ComboBox();
+    mPresetDisplay.reset(new ComboBox());
     mPresetDisplay->setBounds(comboBox_x, button_y, comboBox_w, button_h);
     mPresetDisplay->addListener(this);
-    addAndMakeVisible(mPresetDisplay);
+    addAndMakeVisible(mPresetDisplay.get());
     
     updatePresetComboBox();
 }
@@ -79,19 +85,19 @@ void AC_TopPanel::buttonClicked (Button* b)
 {
     AC_PresetManager* presetManager = mProcessor->getPresetManager();
 
-    if (b == mNewPreset){
+    if (b == mNewPreset.get()){
         presetManager->createNewPreset();
 
         updatePresetComboBox();
-    } else if (b == mSavePreset){
+    } else if (b == mSavePreset.get()){
         presetManager->savePreset();
-    } else if (b == mSaveAsPreset){
+    } else if (b == mSaveAsPreset.get()){
         displaySaveAsPopUp();
     }
 }
 void AC_TopPanel::comboBoxChanged (ComboBox* comboBoxThatHasChanged)
 {
-    if(comboBoxThatHasChanged == mPresetDisplay){
+    if(comboBoxThatHasChanged == mPresetDisplay.get()){
 
         AC_PresetManager* presetManager = mProcessor->getPresetManager();
 

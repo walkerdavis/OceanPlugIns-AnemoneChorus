@@ -22,5 +22,5 @@ public:
     ~AC_CenterPanel();
 
 private:
-    ScopedPointer<AC_FXPanel> mFXPanel;
+    std::unique_ptr<AC_FXPanel> mFXPanel;
 };

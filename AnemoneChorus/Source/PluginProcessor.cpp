@@ -143,6 +143,58 @@ bool AnemoneChorusAudioProcessor::isBusesLayoutSupported (const BusesLayout& lay
 }
 #endif
 
+//bool AnemoneChorusAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
+//{
+//    if (layouts.getMainInputChannels() > 2 || layouts.getMainOutputChannels() > 2)
+//    {
+//        return false;
+//    }
+//    // no suport for stereo to mono
+//
+//    if (layouts.getMainInputChannels() == 2 && layouts.getMainOutputChannels() == 1)
+//    {
+//        return false;
+//    }
+//    const bool kOutput = false;
+//
+//
+//
+//    // All additional output buses need to be mono
+//    for (int bus = 1; bus < layouts.outputBuses.size(); ++bus)
+//    {
+//        if (layouts.getChannelSet(kOutput, bus).size() != 1)
+//        {
+//            return false;
+//        }
+//    }
+//
+//    // LOOK HERE!!!!!!
+//    if (layouts.inputBuses.size() != 1)
+//    {
+//        return false;
+//    }
+//    return true;
+//
+//}
+
+
+
+// setting up the initial bus properties
+
+//AnemoneChorusAudioProcessor::BusesProperties PassthroughBlock::getBusLayout()
+//
+//{
+//    BusesProperties buses{};
+//
+//    // Add main buses
+//    bool defaultActivation = true;
+//
+//    // TODO: This should determine its I/O topology from the submodules.
+//    buses.addBus(true, "Input", AudioChannelSet::stereo(), defaultActivation);
+//    buses.addBus(false, "Output", AudioChannelSet::stereo(), defaultActivation);
+//    return buses;
+//
+//}
 
 
 void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
@@ -254,7 +306,7 @@ void AnemoneChorusAudioProcessor::setStateInformation (const void* data, int siz
     // whose contents will have been created by the getStateInformation() call.
     
     std::unique_ptr<XmlElement> xmlState;
-    xmlState.reset(getXmlFromBinary(data, sizeInBytes));
+    xmlState = (getXmlFromBinary(data, sizeInBytes));
     
     if (xmlState != nullptr){
         forEachXmlChildElement(*xmlState, subChild){

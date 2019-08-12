@@ -117,6 +117,10 @@
 			isa = PBXBuildFile;
 			fileRef = 9E99A67EFA61FE169E7B423E;
 		};
+		22FD9FA4BDA728903DAB51F9 = {
+			isa = PBXBuildFile;
+			fileRef = C585A251DC2F4E2085040AA9;
+		};
 		ACF93D44089A77DC03E2F980 = {
 			isa = PBXBuildFile;
 			fileRef = C9C6054ABCB0E1E00F1F1D55;
@@ -399,6 +403,13 @@
 			path = "../../Source/AC_LFO.h";
 			sourceTree = "SOURCE_ROOT";
 		};
+		5BF1F2DB3365B70DFF4ACE3B = {
+			isa = PBXFileReference;
+			lastKnownFileType = file;
+			name = "juce_gui_extra";
+			path = "/Users/walkerrdavis/Development/JUCE/modules/juce_gui_extra";
+			sourceTree = "<absolute>";
+		};
 		63D2583C554A4660C49901CC = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -447,13 +458,6 @@
 			name = "include_juce_audio_plugin_client_AU_1.mm";
 			path = "../../JuceLibraryCode/include_juce_audio_plugin_client_AU_1.mm";
 			sourceTree = "SOURCE_ROOT";
-		};
-		5BF1F2DB3365B70DFF4ACE3B = {
-			isa = PBXFileReference;
-			lastKnownFileType = file;
-			name = "juce_gui_extra";
-			path = "/Users/walkerrdavis/Development/JUCE/modules/juce_gui_extra";
-			sourceTree = "<absolute>";
 		};
 		5FD21EC8779FAFE12B8A7AE4 = {
 			isa = PBXFileReference;
@@ -530,13 +534,6 @@
 			lastKnownFileType = sourcecode.cpp.cpp;
 			name = "AC_TopPanel.cpp";
 			path = "../../Source/AC_TopPanel.cpp";
-			sourceTree = "SOURCE_ROOT";
-		};
-		93C052443432CEB5339D7DF6 = {
-			isa = PBXFileReference;
-			lastKnownFileType = image.png;
-			name = "bk_v3.png";
-			path = "../../Assets/bk_v3.png";
 			sourceTree = "SOURCE_ROOT";
 		};
 		942CC91E82B2A5DFBB451B1F = {
@@ -728,6 +725,13 @@
 			path = System/Library/Frameworks/DiscRecording.framework;
 			sourceTree = SDKROOT;
 		};
+		C585A251DC2F4E2085040AA9 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.cpp.cpp;
+			name = "AC_EnvelopeFollower.cpp";
+			path = "../../Source/AC_EnvelopeFollower.cpp";
+			sourceTree = "SOURCE_ROOT";
+		};
 		C9C6054ABCB0E1E00F1F1D55 = {
 			isa = PBXFileReference;
 			lastKnownFileType = sourcecode.cpp.cpp;
@@ -798,6 +802,13 @@
 			path = ../../Source/PluginEditor.h;
 			sourceTree = "SOURCE_ROOT";
 		};
+		E209E8A695170FADC60BF255 = {
+			isa = PBXFileReference;
+			lastKnownFileType = image.png;
+			name = "bk_v6.png";
+			path = "../../Assets/bk_v6.png";
+			sourceTree = "SOURCE_ROOT";
+		};
 		E41E7AD14380DB57520D3E43 = {
 			isa = PBXFileReference;
 			lastKnownFileType = file;
@@ -824,6 +835,13 @@
 			lastKnownFileType = sourcecode.c.h;
 			name = "AC_Parameters.h";
 			path = "../../Source/AC_Parameters.h";
+			sourceTree = "SOURCE_ROOT";
+		};
+		EE2C4BEC0AAA09AEB47EDE34 = {
+			isa = PBXFileReference;
+			lastKnownFileType = sourcecode.c.h;
+			name = "AC_EnvelopeFollower.h";
+			path = "../../Source/AC_EnvelopeFollower.h";
 			sourceTree = "SOURCE_ROOT";
 		};
 		EE4A4DEAAE93963C104B118B = {
@@ -952,6 +970,8 @@
 			children = (
 				9E99A67EFA61FE169E7B423E,
 				103365DB4E5F0A773FD42A7C,
+				C585A251DC2F4E2085040AA9,
+				EE2C4BEC0AAA09AEB47EDE34,
 				C9C6054ABCB0E1E00F1F1D55,
 				7C4EE7524D947E792DF9F7E3,
 				03511F32610EE79C8C3B103A,
@@ -975,8 +995,8 @@
 			isa = PBXGroup;
 			children = (
 				98391C1BE34E70792292C28C,
+				E209E8A695170FADC60BF255,
 				1CE395217502B2A5FF8CBDCE,
-				93C052443432CEB5339D7DF6,
 			);
 			name = Assets;
 			sourceTree = "<group>";
@@ -1263,7 +1283,7 @@
 				LIBRARY_STYLE = Bundle;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lAnemoneChorus";
-				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\"";
+				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WalkerOceanPlugins.AnemoneChorus;
 				PRODUCT_NAME = "AnemoneChorus";
 				USE_HEADERMAP = NO;
@@ -1316,7 +1336,7 @@
 				LLVM_LTO = YES;
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				OTHER_LDFLAGS = "-bundle -lAnemoneChorus";
-				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\"";
+				OTHER_REZFLAGS = "-d ppc_$ppc -d i386_$i386 -d ppc64_$ppc64 -d x86_64_$x86_64 -I /System/Library/Frameworks/CoreServices.framework/Frameworks/CarbonCore.framework/Versions/A/Headers -I \"$(DEVELOPER_DIR)/Extras/CoreAudio/AudioUnits/AUPublic/AUBase\" -I \"$(DEVELOPER_DIR)/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/System/Library/Frameworks/AudioUnit.framework/Headers\"";
 				PRODUCT_BUNDLE_IDENTIFIER = com.WalkerOceanPlugins.AnemoneChorus;
 				PRODUCT_NAME = "AnemoneChorus";
 				USE_HEADERMAP = NO;
@@ -1676,6 +1696,7 @@
 				F5DA40609744E5FADC1B0236,
 				A8B523C706282A598A22B5CE,
 				99C46AFDDC8B4B8F64657D6A,
+				FEDD4D46AAA48B9865E42093,
 				6AA3B82F843600338FB2AFC1,
 				F344C0B66178CA569416DF50,
 				81C01F14056764DF9B43BDE9,
@@ -1808,6 +1829,7 @@
 				F5DA40609744E5FADC1B0236,
 				A8B523C706282A598A22B5CE,
 				99C46AFDDC8B4B8F64657D6A,
+				FEDD4D46AAA48B9865E42093,
 				6AA3B82F843600338FB2AFC1,
 				F344C0B66178CA569416DF50,
 				81C01F14056764DF9B43BDE9,
@@ -1857,6 +1879,7 @@
 				DE59C8F5F07E1CCDA4B8A146,
 				3EADFEF9C1C944ADEABC8A77,
 				57ADAA09ED523A6D86E720FA,
+				22FD9FA4BDA728903DAB51F9,
 				ACF93D44089A77DC03E2F980,
 				75B23B6F3B28E2CC085E1C97,
 				849B6B073B8304CF2328CF03,
@@ -1896,7 +1919,7 @@
 		F13CC7FEEE006B6C32EC2E91 = {
 			isa = PBXProject;
 			buildConfigurationList = D8C94031A4DD87CDB8CAF2E0;
-			attributes = { LastUpgradeCheck = 0930; ORGANIZATIONNAME = "WalkerOceanPlug-ins"; TargetAttributes = { 0640F90663C508D22977F169 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };E3B8785684366214A00F8351 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };88B5C68BFB45152E1AC56A52 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };AA1FBFC06BBED87008AA5DC1 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };545A4AA1890A7E0D1D7AE906 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
+			attributes = { LastUpgradeCheck = 1100; ORGANIZATIONNAME = "WalkerOceanPlug-ins"; TargetAttributes = { 0640F90663C508D22977F169 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };E3B8785684366214A00F8351 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };88B5C68BFB45152E1AC56A52 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };AA1FBFC06BBED87008AA5DC1 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; };545A4AA1890A7E0D1D7AE906 = { SystemCapabilities = {com.apple.ApplicationGroups.iOS = { enabled = 0; }; com.apple.InAppPurchase = { enabled = 0; }; com.apple.InterAppAudio = { enabled = 0; }; com.apple.Push = { enabled = 0; }; com.apple.Sandbox = { enabled = 0; }; com.apple.HardenedRuntime = { enabled = 0; }; }; }; }; };
 			compatibilityVersion = "Xcode 3.2";
 			hasScannedForEncodings = 0;
 			mainGroup = 7A6CF47FE93A820EC64E198A;

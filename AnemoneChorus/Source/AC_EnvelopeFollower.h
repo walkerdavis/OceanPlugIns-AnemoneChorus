@@ -46,8 +46,6 @@ private:
     double mSampleRate;
     float mBuffer[maxBufferDelaySize];
     
-//    bool mDirection;
-//    int mHoldTime;
     int mHoldCounter;
     float mCurrentPeak;
     float mValue;

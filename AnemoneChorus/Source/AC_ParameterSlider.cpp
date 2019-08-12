@@ -20,8 +20,8 @@ AC_ParameterSlider::AC_ParameterSlider(AudioProcessorValueTreeState& stateToCont
     
     setRange(0.0f, 1.0f, 0.001f);
     
-    mAttachment = new AudioProcessorValueTreeState::SliderAttachment(stateToControl, parameterID, *this);
-    
+//    mAttachment = new AudioProcessorValueTreeState::SliderAttachment(stateToControl, parameterID, *this);
+    mAttachment.reset(new AudioProcessorValueTreeState::SliderAttachment(stateToControl, parameterID, *this));
 }
 
 AC_ParameterSlider::~AC_ParameterSlider()

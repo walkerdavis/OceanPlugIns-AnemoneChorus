@@ -25,6 +25,6 @@ public:
     
 private:
     
-    ScopedPointer<AC_TopPanel> mTopPanel;
-    ScopedPointer<AC_CenterPanel> mCenterPanel;
+    std::unique_ptr<AC_TopPanel> mTopPanel;
+    std::unique_ptr<AC_CenterPanel> mCenterPanel;
 };

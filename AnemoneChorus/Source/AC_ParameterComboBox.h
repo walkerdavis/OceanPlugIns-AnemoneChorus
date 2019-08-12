@@ -23,7 +23,7 @@ public:
     
 private:
     
-    ScopedPointer<AudioProcessorValueTreeState::ComboBoxAttachment> mAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::ComboBoxAttachment> mAttachment;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AC_ParameterComboBox);
     

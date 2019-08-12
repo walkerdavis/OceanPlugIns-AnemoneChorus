@@ -24,7 +24,7 @@ public:
     
 private:
     
-    ScopedPointer<AudioProcessorValueTreeState::SliderAttachment> mAttachment;
+    std::unique_ptr<AudioProcessorValueTreeState::SliderAttachment> mAttachment;
     
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR(AC_ParameterSlider);
     

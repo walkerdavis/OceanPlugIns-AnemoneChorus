@@ -15,8 +15,8 @@ AC_ParameterComboBox::AC_ParameterComboBox(AudioProcessorValueTreeState& stateTo
 :   juce::ComboBox(parameterID)
 {
     
-    mAttachment = new AudioProcessorValueTreeState::ComboBoxAttachment(stateToControl, parameterID, *this);
-    
+//    mAttachment = new AudioProcessorValueTreeState::ComboBoxAttachment(stateToControl, parameterID, *this);
+    mAttachment.reset(new AudioProcessorValueTreeState::ComboBoxAttachment(stateToControl, parameterID, *this));
 }
 
 AC_ParameterComboBox::~AC_ParameterComboBox()

@@ -15,9 +15,10 @@ AC_CenterPanel::AC_CenterPanel(AnemoneChorusAudioProcessor* inProcessor)\
 {
     setSize(CENTER_PANEL_WIDTH, CENTER_PANEL_HEIGHT);
     
-    mFXPanel = new AC_FXPanel(inProcessor);
+//    mFXPanel = new AC_FXPanel(inProcessor);
+    mFXPanel.reset(new AC_FXPanel(inProcessor));
     mFXPanel->setTopLeftPosition(0, 0);
-    addAndMakeVisible(mFXPanel);
+    addAndMakeVisible(mFXPanel.get());
     
 }
 AC_CenterPanel::~AC_CenterPanel()

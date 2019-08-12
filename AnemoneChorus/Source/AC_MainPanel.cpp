@@ -17,13 +17,15 @@ AC_MainPanel::AC_MainPanel(AnemoneChorusAudioProcessor* inProcessor)
     setSize(MAIN_PANEL_WIDTH,
             MAIN_PANEL_HEIGHT);
     
-    mTopPanel = new AC_TopPanel(inProcessor);
+//    mTopPanel = new AC_TopPanel(inProcessor);
+    mTopPanel.reset(new AC_TopPanel(inProcessor));
     mTopPanel->setTopLeftPosition(0, 0);
-    addAndMakeVisible(mTopPanel);
+    addAndMakeVisible(mTopPanel.get());
     
-    mCenterPanel = new AC_CenterPanel(inProcessor);
+//    mCenterPanel = new AC_CenterPanel(inProcessor);
+    mCenterPanel.reset(new AC_CenterPanel(inProcessor));
     mCenterPanel->setTopLeftPosition(0, TOP_PANEL_HEIGHT);
-    addAndMakeVisible(mCenterPanel);
+    addAndMakeVisible(mCenterPanel.get());
 }
 AC_MainPanel::~AC_MainPanel()
 {
