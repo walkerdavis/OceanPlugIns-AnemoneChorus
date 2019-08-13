@@ -22,7 +22,7 @@ AnemoneChorusAudioProcessor::AnemoneChorusAudioProcessor()
                       #endif
                        .withOutput ("Output", AudioChannelSet::stereo(), true)
                       #endif
-//                       .withInput  ("Sidechain", AudioChannelSet::stereo(), true)
+                       .withInput  ("Sidechain", AudioChannelSet::stereo(), true)
                        ),
                 parameters(*this,
                            nullptr,
@@ -119,87 +119,28 @@ void AnemoneChorusAudioProcessor::releaseResources()
     }
 }
 
-#ifndef JucePlugin_PreferredChannelConfigurations
+
 bool AnemoneChorusAudioProcessor::isBusesLayoutSupported (const BusesLayout& layouts) const
 {
-  #if JucePlugin_IsMidiEffect
-    ignoreUnused (layouts);
-    return true;
-  #else
-    // This is the place where you check if the layout is supported.
-    // In this template code we only support mono or stereo.
-    if (layouts.getMainOutputChannelSet() != AudioChannelSet::mono()
-     && layouts.getMainOutputChannelSet() != AudioChannelSet::stereo())
+    const auto numInput = layouts.getMainInputChannelSet().size();
+    const auto numOutput = layouts.getMainOutputChannelSet().size();
+    
+    if (numOutput > 2)
         return false;
-
-    // This checks if the input layout matches the output layout
-   #if ! JucePlugin_IsSynth
-    if (layouts.getMainOutputChannelSet() != layouts.getMainInputChannelSet())
-        return false;
-   #endif
-
-    return true;
-  #endif
+    
+    if (numInput <= 2)
+        return true;
+    
+    return false;
 }
-#endif
 
-//bool AnemoneChorusAudioProcessor::isBusesLayoutSupported(const BusesLayout& layouts) const
-//{
-//    if (layouts.getMainInputChannels() > 2 || layouts.getMainOutputChannels() > 2)
-//    {
-//        return false;
-//    }
-//    // no suport for stereo to mono
-//
-//    if (layouts.getMainInputChannels() == 2 && layouts.getMainOutputChannels() == 1)
-//    {
-//        return false;
-//    }
-//    const bool kOutput = false;
-//
-//
-//
-//    // All additional output buses need to be mono
-//    for (int bus = 1; bus < layouts.outputBuses.size(); ++bus)
-//    {
-//        if (layouts.getChannelSet(kOutput, bus).size() != 1)
-//        {
-//            return false;
-//        }
-//    }
-//
-//    // LOOK HERE!!!!!!
-//    if (layouts.inputBuses.size() != 1)
-//    {
-//        return false;
-//    }
-//    return true;
-//
-//}
-
-
-
-// setting up the initial bus properties
-
-//AnemoneChorusAudioProcessor::BusesProperties PassthroughBlock::getBusLayout()
-//
-//{
-//    BusesProperties buses{};
-//
-//    // Add main buses
-//    bool defaultActivation = true;
-//
-//    // TODO: This should determine its I/O topology from the submodules.
-//    buses.addBus(true, "Input", AudioChannelSet::stereo(), defaultActivation);
-//    buses.addBus(false, "Output", AudioChannelSet::stereo(), defaultActivation);
-//    return buses;
-//
-//}
 
 
 void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, MidiBuffer& midiMessages)
 {
+    
     ScopedNoDenormals noDenormals;
+    auto totalNumMainInputChannels = getMainBusNumInputChannels();
     auto totalNumInputChannels  = getTotalNumInputChannels();
     auto totalNumOutputChannels = getTotalNumOutputChannels();
     
@@ -225,19 +166,39 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     float envDepthAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDepthAmount]);
     
     // get output buffer for each channel
-    for (int channel = 0; channel < totalNumInputChannels; ++channel)
+    for (int channel = 0; channel < totalNumMainInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
         
         float inputGain = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterInputGain]);
         
-        mEnvFol[channel]->process(envThreshold,
-                                  envAttack,
-                                  envHold,
-                                  envRelease,
-                                  envFloor,
-                                  channelData,
-                                  buffer.getNumSamples());
+        if (totalNumInputChannels > totalNumMainInputChannels){
+            
+            int busChannelNumber = channel + (totalNumInputChannels - totalNumMainInputChannels);
+            
+            if (totalNumMainInputChannels != (totalNumInputChannels - totalNumMainInputChannels)){
+                busChannelNumber = channel + 1;
+            }
+            
+            auto* sideChainData = buffer.getWritePointer(busChannelNumber);
+            
+            mEnvFol[channel]->process(envThreshold,
+                                      envAttack,
+                                      envHold,
+                                      envRelease,
+                                      envFloor,
+                                      sideChainData,
+                                      buffer.getNumSamples());
+        } else {
+        
+            mEnvFol[channel]->process(envThreshold,
+                                      envAttack,
+                                      envHold,
+                                      envRelease,
+                                      envFloor,
+                                      channelData,
+                                      buffer.getNumSamples());
+        }
         
         mInputGain[channel]->process(channelData,
                             inputGain,
@@ -271,7 +232,17 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                              outputGain,
                              channelData,
                              buffer.getNumSamples());
+        
+        if (totalNumMainInputChannels == 1 & totalNumOutputChannels < 1){
+            for (int oChannel = 1; oChannel < totalNumOutputChannels; oChannel ++){
+                auto* oChannelData = buffer.getWritePointer (oChannel);
+                oChannelData = channelData;
+            }
+        }
     }
+    
+    
+    
 }
 
 //==============================================================================

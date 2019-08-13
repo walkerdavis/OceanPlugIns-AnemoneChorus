@@ -32,6 +32,15 @@ public:
     void releaseResources() override;
 
 //   #ifndef JucePlugin_PreferredChannelConfigurations
+    static BusesProperties getDefaultLayout()
+    {
+        BusesProperties buses;
+        buses.addBus (true, "input", AudioChannelSet::stereo());
+        buses.addBus (false, "Output", AudioChannelSet::stereo());
+        buses.addBus (true, "Sidechain", AudioChannelSet::mono());
+        return buses;
+    }
+    
     bool isBusesLayoutSupported (const BusesLayout& layouts) const override;
 //   #endif
 
