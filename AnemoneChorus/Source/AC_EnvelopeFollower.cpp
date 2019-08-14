@@ -45,13 +45,15 @@ void AC_EnvelopeFollower::process(float inThreshold,
                                      float inHoldTime,
                                      float inReleaseTime,
                                      float inFloor,
+                                     float inGain,
                                      float* inData,
                                      int inNumSamples)
 {
     const float ms = mSampleRate/1000;
     const float attack = jmap(inAttackTime, 0.0f, 1.0f, 1.0f, 100.0f);
-    const float hold = jmap(inReleaseTime, 0.0f, 1.0f, 0.f, 500.0f);
-    const float release = jmap(inReleaseTime, 0.0f, 1.0f, 5.0f, 20000.0f);
+    const float hold = jmap(inReleaseTime, 0.0f, 1.0f, 0.f, 200.0f);
+    const float release = jmap(inReleaseTime, 0.0f, 1.0f, 5.0f, 5000.0f);
+    const float gain = jmap(inGain, 0.0f, 1.0f, 0.0f, 2.0f);
     
     for (int i = 0; i < inNumSamples; i++){
         
@@ -60,8 +62,8 @@ void AC_EnvelopeFollower::process(float inThreshold,
             case(kAC_EnvState_Attack):{
                 mValue += 1/(attack*ms);
                 
-                if (fabs(inData[i]) > mCurrentPeak){
-                    mCurrentPeak = fabs(inData[i]);
+                if (fabs(inData[i] * gain) > mCurrentPeak){
+                    mCurrentPeak = fabs(inData[i] * gain);
                 }
                 
                 if (mValue > mCurrentPeak){
@@ -86,14 +88,14 @@ void AC_EnvelopeFollower::process(float inThreshold,
             case(kAC_EnvState_Release):{
                 mValue -= 1/(release*ms);
                 
-                if (fabs(inData[i]) < inFloor){
+                if (fabs(inData[i] * gain) < inFloor){
                     if (mValue < 0.){
                         mValue = 0.;
                     }
                     
                 } else {
-                    if (fabs(inData[i]) > mCurrentPeak){
-                        mCurrentPeak = fabs(inData[i]);
+                    if (fabs(inData[i] * gain) > mCurrentPeak){
+                        mCurrentPeak = fabs(inData[i] * gain);
                     }
                     mEnvState = kAC_EnvState_Attack;
                 }
@@ -105,34 +107,6 @@ void AC_EnvelopeFollower::process(float inThreshold,
             } break;
         }
         
-//        if (mDirection){
-//            mValue += 1/(attack*ms);
-//
-//            if (fabs(inData[i]) > mCurrentPeak){
-//                mCurrentPeak = fabs(inData[i]);
-//            }
-//
-//            if (mValue > mCurrentPeak){
-//                mDirection = false;
-//                mValue = mCurrentPeak;
-//                mCurrentPeak = 0.;
-//            }
-//
-//        } else {
-//            mValue -= 1/(release*ms);
-//
-//            if (fabs(inData[i]) < inFloor){
-//                if (mValue < 0.){
-//                    mValue = 0.;
-//                }
-//
-//            } else {
-//                if (fabs(inData[i]) > mCurrentPeak){
-//                mCurrentPeak = fabs(inData[i]);
-//                }
-//                mDirection = true;
-//            }
-//        }
         mBuffer[i] = mValue;
     }
     

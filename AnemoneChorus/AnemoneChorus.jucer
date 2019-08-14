@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <JUCERPROJECT id="oExN8r" name="AnemoneChorus" projectType="audioplug" jucerVersion="5.4.4"
-              companyName="WalkerOceanPlug-ins">
+              companyName="WalkerOceanPlug-ins" pluginFormats="buildAU,buildVST3">
   <MAINGROUP id="cwM0xR" name="AnemoneChorus">
     <GROUP id="{2F8F9925-C444-80F5-17F0-CF1B4E6AABE1}" name="Panels">
       <FILE id="NvVjaj" name="AC_CenterPanel.cpp" compile="1" resource="0"
@@ -73,8 +73,8 @@
     </GROUP>
     <GROUP id="{3BBD6528-662D-B7EF-9733-F8900187DD7E}" name="Assets">
       <FILE id="LNFoYD" name="ac_knob2.png" compile="0" resource="1" file="Assets/ac_knob2.png"/>
-      <FILE id="BPaF6K" name="bk_v6.png" compile="0" resource="1" file="Assets/bk_v6.png"/>
       <FILE id="STGjQd" name="ac_knob.png" compile="0" resource="1" file="Assets/ac_knob.png"/>
+      <FILE id="UiK1xf" name="bk_v7.png" compile="0" resource="1" file="Assets/bk_v7.png"/>
     </GROUP>
   </MAINGROUP>
   <EXPORTFORMATS>

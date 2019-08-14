@@ -91,6 +91,9 @@ private:
     void initializeDSP();
     AudioProcessorValueTreeState::ParameterLayout createParameterLayout();
     
+    int mCurrentNumTotalChannels = 0;
+    
+    
     //==============================================================================
     JUCE_DECLARE_NON_COPYABLE_WITH_LEAK_DETECTOR (AnemoneChorusAudioProcessor)
 };

@@ -45,7 +45,7 @@ void AC_LFO::process(float inRate,
     
     const float rateAmountMapped = jmap(inRateAmount, 0.0f, 1.0f, -2.0f, 2.0f);
     const float depthAmountMapped = jmap(inDepthAmount, 0.0f, 1.0f, -2.0f, 2.0f);
-    
+    const float phaseOffsetMapped = jmap(inPhaseOffset, 0.0f, 1.0f, 0.0f, 0.25f);
     
     for (int i = 0; i < inNumSamples; i++){
         float rateCurrent = inRate + (inEnvFolBuffer[i] * rateAmountMapped);
@@ -62,7 +62,7 @@ void AC_LFO::process(float inRate,
             mPhase -= 1;
         }
         
-        float phaseWithOffset = mPhase + inPhaseOffset;
+        float phaseWithOffset = mPhase + phaseOffsetMapped;
         
         if (phaseWithOffset> 1){
             phaseWithOffset -= 1;

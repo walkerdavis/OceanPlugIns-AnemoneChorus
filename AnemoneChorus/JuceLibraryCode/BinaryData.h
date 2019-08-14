@@ -11,11 +11,11 @@ namespace BinaryData
     extern const char*   ac_knob2_png;
     const int            ac_knob2_pngSize = 664228;
 
-    extern const char*   bk_v6_png;
-    const int            bk_v6_pngSize = 1182443;
-
     extern const char*   ac_knob_png;
     const int            ac_knob_pngSize = 743892;
+
+    extern const char*   bk_v7_png;
+    const int            bk_v7_pngSize = 1184865;
 
     // Number of elements in the namedResourceList and originalFileNames arrays.
     const int namedResourceListSize = 3;

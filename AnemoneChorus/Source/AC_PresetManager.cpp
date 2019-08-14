@@ -42,13 +42,14 @@ AC_PresetManager::AC_PresetManager(AudioProcessor* inProcessor)
     #endif
     
     // directory for anemone chorus presets
-    mPresetDirectory = companyNameDirectory + directorySeperator + ((String) mProcessor->getName());
+    mPresetDirectory = companyNameDirectory + directorySeperator + ((String) mProcessor->getName()) + "V1.3";
     
     if(~File(mPresetDirectory).exists()){
         File(mPresetDirectory).createDirectory();
     }
     
     storeLocalPreset();
+    
 }
 AC_PresetManager::~AC_PresetManager()
 {

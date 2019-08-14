@@ -165,12 +165,12 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
     float envRateAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterRateAmount]);
     float envDepthAmount = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterDepthAmount]);
     
+    float envGain = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterInputGain]);
+    
     // get output buffer for each channel
     for (int channel = 0; channel < totalNumMainInputChannels; ++channel)
     {
         auto* channelData = buffer.getWritePointer (channel);
-        
-        float inputGain = *parameters.getRawParameterValue(AC_ParameterID[kAC_ParameterInputGain]);
         
         if (totalNumInputChannels > totalNumMainInputChannels){
             
@@ -187,6 +187,7 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                                       envHold,
                                       envRelease,
                                       envFloor,
+                                      envGain,
                                       sideChainData,
                                       buffer.getNumSamples());
         } else {
@@ -196,14 +197,15 @@ void AnemoneChorusAudioProcessor::processBlock (AudioBuffer<float>& buffer, Midi
                                       envHold,
                                       envRelease,
                                       envFloor,
+                                      envGain,
                                       channelData,
                                       buffer.getNumSamples());
         }
         
-        mInputGain[channel]->process(channelData,
-                            inputGain,
-                            channelData,
-                            buffer.getNumSamples());
+//        mInputGain[channel]->process(channelData,
+//                            inputGain,
+//                            channelData,
+//                            buffer.getNumSamples());
         if (channel == 1){
             modulationPhaseOffset = 0;
         }

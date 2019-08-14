@@ -149,7 +149,7 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
             AC_ParameterSlider* release = new AC_ParameterSlider(mProcessor->parameters,
                                                                    AC_ParameterID[kAC_ParameterRelease],
                                                                    AC_ParameterLabel[kAC_ParameterRelease]);
-            release->setBounds(680, 170, 29, 29);
+            release->setBounds(655, 173, 29, 29);
             addAndMakeVisible(release);
             mSliders.add(release);
             
@@ -160,6 +160,14 @@ void AC_FXPanel::setFXPanelStyle(AC_FXPanelStyle inStyle)
             floor->setBounds(590, 200, 37, 37);
             addAndMakeVisible(floor);
             mSliders.add(floor);
+            
+            // envGain
+            AC_ParameterSlider* envGain = new AC_ParameterSlider(mProcessor->parameters,
+                                                               AC_ParameterID[kAC_ParameterInputGain],
+                                                               AC_ParameterLabel[kAC_ParameterInputGain]);
+            envGain->setBounds(701, 206, 33, 33);
+            addAndMakeVisible(envGain);
+            mSliders.add(envGain);
             
             
             // CHORUS AMOUNT ROTARY SLIDERS

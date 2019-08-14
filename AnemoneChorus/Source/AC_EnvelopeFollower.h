@@ -35,6 +35,7 @@ public:
                  float inHoldTime,
                  float inReleaseTime,
                  float inFloor,
+                 float inGain,
                  float* inData,
                  int inNumSamples);
     

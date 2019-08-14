@@ -11,8 +11,8 @@
 #pragma once
 enum AC_Parameters
 {
-    kAC_ParameterInputGain = 0,
-    kAC_ModulationRate,
+    
+    kAC_ModulationRate = 0,
     kAC_ModulationDepth,
     kAC_ParameterFeedback,
     
@@ -21,12 +21,14 @@ enum AC_Parameters
     kAC_ParameterDepthAmount,
     kAC_ParameterFeedbackAmount,
     
+    
     kAC_ParameterThreshold,
     kAC_ParameterAttack,
     kAC_ParameterHold,
     kAC_ParameterRelease,
     
     kAC_ParameterFloor,
+    kAC_ParameterInputGain,
     kAC_ParameterSoftClip,
     kAC_ParameterWetDry,
     kAC_ParameterOutputGain,
@@ -36,7 +38,7 @@ enum AC_Parameters
 
 static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
 {
-    "InputGain",
+    
     "ModulationRate",
     "ModulationDepth",
     "Feedback",
@@ -46,12 +48,14 @@ static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
     "EnvelopeDepthAmount",
     "EnvelopeFeedbackAmount",
     
+    
     "EnvelopeThreshold",
     "EnvelopeAttack",
     "EnvelopeHold",
     "EnvelopeRelease",
     
     "EnvelopeFloor",
+    "EnvelopeGain",
     "SoftClip",
     "WetDry",
     "OutputGain",
@@ -61,7 +65,7 @@ static String AC_ParameterID [kAC_Parameter_TotalNumParameters] =
 
 static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 {
-    "Input Gain",
+    
     "Rate",
     "Depth",
     "Fdbk",
@@ -71,12 +75,14 @@ static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
     "Env Depth Amnt",
     "Env Fdbk Amnt",
     
+    
     "Env Thrshld",
     "Env Atk",
     "Env Hold",
     "Env Rel",
     
     "Env Floor",
+    "Env Gain",
     "Soft Clip",
     "Wet Dry",
     "Output Gain",
@@ -84,7 +90,7 @@ static String AC_ParameterLabel [kAC_Parameter_TotalNumParameters] =
 
 static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
 {
-    0.5f,
+    
     0.5f,
     0.5f,
     0.5f,
@@ -93,6 +99,7 @@ static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
     0.5f,
     0.5f,
     0.5f,
+    
     
     0.7f,
     0.2f,
@@ -100,6 +107,7 @@ static float AC_ParameterDefaultValue [kAC_Parameter_TotalNumParameters] =
     0.7f,
     
     0.1f,
+    0.5f,
     0.f,
     0.5f,
     0.5f,
