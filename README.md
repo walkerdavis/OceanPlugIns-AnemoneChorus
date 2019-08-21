@@ -1,9 +1,9 @@
 # OceanPlugIns-AnemoneChorus
-## A Side-Chaining, Evelope-Following Chorus VST3 plug-in built using the JUCE Framework, Version 1.3
+## A Side-Chaining, Envelope-Following Chorus VST3 plug-in built using the JUCE Framework, Version 1.3
 
 ### ![alt text](GUI_export_081419.png)  
 
-This is the first of several plug-ins in a my Ocean Plug-ins Suite.  The actual Chorus effect/DSP is pretty straight-forward, except that there is an internal envelope follower that modulates the Rate, Depth, and Feeback using the incoming audio's amplitude.  Now, in V1.3, you can also take the envelope from another track's output signal to sidechain all of the parameters.
+This is the first of several plug-ins in my Ocean Plug-ins Suite.  The actual Chorus effect/DSP is pretty straight-forward, except that there is an internal envelope follower that modulates the Rate, Depth, and Feeback using the incoming audio's amplitude.  Now, in V1.3, you can also take the envelope from another track's output signal to sidechain all of the parameters.
 
 
 ## Design
